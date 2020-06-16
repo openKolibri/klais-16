@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP STM8S003
+D 16MHz, 8K Flash, 1k RAM, 128 EEPROM, USART, I2C, SPI, TSSOP20
+K STM8S Mainstream Value line 8-bit, 16MHz, 1k RAM, 128 EEPROM
+F http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00024550.pdf
+$ENDCMP
+#
+#End Doc Library

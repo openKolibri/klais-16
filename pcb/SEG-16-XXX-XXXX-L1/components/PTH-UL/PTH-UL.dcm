@@ -1,0 +1,11 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP PTH-UL-1.5mm
+D 1.5mm Plated Though hole for underline
+$ENDCMP
+#
+$CMP PTH-UL-3.0mm
+D 3.0mm Plated Though hole for underline
+$ENDCMP
+#
+#End Doc Library

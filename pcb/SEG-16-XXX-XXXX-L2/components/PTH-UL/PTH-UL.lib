@@ -1,0 +1,28 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# PTH-UL-1.5mm
+#
+DEF PTH-UL-1.5mm H 0 40 Y Y 1 F N
+F0 "H" 100 0 50 H V C CNN
+F1 "PTH-UL-1.5mm" 0 -100 50 H V C CNN
+F2 "PTH-UL:PTH-UL-1.5mm" 0 -200 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 0 50 0 1 0 N
+ENDDRAW
+ENDDEF
+#
+# PTH-UL-3.0mm
+#
+DEF PTH-UL-3.0mm H 0 40 Y Y 1 F N
+F0 "H" 100 0 50 H V C CNN
+F1 "PTH-UL-3.0mm" 0 -100 50 H V C CNN
+F2 "PTH-UL:PTH-UL-3.0mm" 0 -200 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 0 50 0 1 0 N
+ENDDRAW
+ENDDEF
+#
+#End Library

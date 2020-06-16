@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP M3-3.1-Tented
+D M3 Close fit Mounting Hole without connection
+K mounting hole
+F ~
+$ENDCMP
+#
+$CMP M3-3.1-Tented-Connect
+D M3 Close fit Mounting Hole with connection
+K mounting hole
+F ~
+$ENDCMP
+#
+#End Doc Library

@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name M3)(type Legacy)(uri ${KIPRJMOD}/components/M3/M3.lib)(options "")(descr ""))
+)

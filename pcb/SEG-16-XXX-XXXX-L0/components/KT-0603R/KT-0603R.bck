@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP KT-0603R
+D Light emitting diode, small symbol, filled shape
+K LED diode light-emitting-diode
+F ~
+$ENDCMP
+#
+#End Doc Library

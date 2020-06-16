@@ -1,0 +1,49 @@
+{
+    "build": {
+      "core": "sduino",
+      "extra_flags": "-DSTM8S003",
+      "f_cpu": "16000000L",
+      "cpu": "stm8",
+      "mcu": "stm8s003f3",
+      "variant": "stm8s003f3"
+    },
+    "debug": {
+      "openocd_target": "stm8s003",
+      "tools": {
+        "stlink-v2": {
+          "default": true,
+          "server": {
+            "arguments": [
+              "-f",
+              "scripts/interface/stlink.cfg",
+              "-f",
+              "scripts/target/stm8s003.cfg",
+              "-c",
+              "init",
+              "-c",
+              "reset halt"
+            ],
+            "executable": "bin/openocd",
+            "package": "tool-openocd"
+          }
+        }
+      }
+    },
+    "frameworks": [
+      "arduino",
+      "spl"
+    ],
+    "upload": {
+      "maximum_ram_size": 1024,
+      "maximum_size": 8192,
+      "protocol": "stlinkv2",
+      "protocols": [
+        "serial",
+        "stlink",
+        "stlinkv2"
+      ]
+    },
+    "name": "ST STM8S003F3",
+    "url": "https://www.st.com/resource/en/datasheet/stm8s003f3.pdf",
+    "vendor": "ST"
+  }

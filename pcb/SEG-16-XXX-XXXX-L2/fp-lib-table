@@ -1,0 +1,7 @@
+(fp_lib_table
+  (lib (name M3)(type KiCad)(uri ${KIPRJMOD}/components/M3/M3.pretty)(options "")(descr ""))
+  (lib (name PTH-UL)(type KiCad)(uri ${KIPRJMOD}/components/PTH-UL/PTH-UL.pretty)(options "")(descr ""))
+  (lib (name TAJA106K016RNJ)(type KiCad)(uri ${KIPRJMOD}/components/TAJA106K016RNJ/TAJA106K016RNJ.pretty)(options "")(descr ""))
+  (lib (name TAJB107K006RNJ)(type KiCad)(uri ${KIPRJMOD}/components/TAJB107K006RNJ/TAJB107K006RNJ.pretty)(options "")(descr ""))
+  (lib (name TM1640)(type KiCad)(uri ${KIPRJMOD}/components/TM1640/TM1640.pretty)(options "")(descr ""))
+)

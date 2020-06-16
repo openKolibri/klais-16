@@ -1,0 +1,17 @@
+(module label (layer F.Cu) (tedit 5ED8A996)
+  (fp_text reference G*** (at 0 0) (layer Eco2.User) hide
+    (effects (font (size 1.524 1.524) (thickness 0.3)))
+  )
+  (fp_text value LOGO (at 0.75 0) (layer Eco2.User) hide
+    (effects (font (size 1.524 1.524) (thickness 0.3)))
+  )
+  (fp_poly (pts (xy 19.01559 6.511463) (xy -19.015589 6.511463) (xy -19.015589 -6.511463) (xy 19.01559 -6.511463)
+    (xy 19.01559 6.511463)) (layer F.SilkS) (width 0.01))
+  (fp_text user Label (at 0 0) (layer F.Fab)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_line (start -19 6.5) (end 19 6.5) (layer F.Fab) (width 0.12))
+  (fp_line (start 19 -6.5) (end -19 -6.5) (layer F.Fab) (width 0.12))
+  (fp_line (start -19 -6.5) (end -19 6.5) (layer F.Fab) (width 0.12))
+  (fp_line (start 19 6.5) (end 19 -6.5) (layer F.Fab) (width 0.12))
+)

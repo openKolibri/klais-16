@@ -1,0 +1,10 @@
+(module PTH-UL-1.5mm (layer F.Cu) (tedit 5ED646B9)
+  (fp_text reference REF** (at 0 2) (layer Eco2.User) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value PTH-UL-1.5mm (at 0 -1.75) (layer Eco2.User) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_circle (center 0 0) (end 1 0) (layer F.CrtYd) (width 0.05))
+  (pad 1 thru_hole circle (at 0 0) (size 2 2) (drill 1.5) (layers *.Cu *.Mask))
+)

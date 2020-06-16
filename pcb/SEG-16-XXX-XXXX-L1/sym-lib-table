@@ -1,0 +1,9 @@
+(sym_lib_table
+  (lib (name M3)(type Legacy)(uri ${KIPRJMOD}/components/M3/M3.lib)(options "")(descr ""))
+  (lib (name TAJA106K016RNJ)(type Legacy)(uri ${KIPRJMOD}/components/TAJA106K016RNJ/TAJA106K016RNJ.lib)(options "")(descr ""))
+  (lib (name TAJB107K006RNJ)(type Legacy)(uri ${KIPRJMOD}/components/TAJB107K006RNJ/TAJB107K006RNJ.lib)(options "")(descr ""))
+  (lib (name TM1640)(type Legacy)(uri ${KIPRJMOD}/components/TM1640/TM1640.lib)(options "")(descr ""))
+  (lib (name STM8S003)(type Legacy)(uri ${KIPRJMOD}/components/STM8S003/STM8S003.lib)(options "")(descr ""))
+  (lib (name 0472861101)(type Legacy)(uri ${KIPRJMOD}/components/0472861101/0472861101.lib)(options "")(descr ""))
+  (lib (name PTH-UL)(type Legacy)(uri ${KIPRJMOD}/components/PTH-UL/PTH-UL.lib)(options "")(descr ""))
+)

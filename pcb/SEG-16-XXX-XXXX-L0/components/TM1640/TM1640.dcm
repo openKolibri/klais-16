@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TM1640
+D 16x8 LED driver
+F ${KIPRJMOD}/components/TM1640/TM1640.pdf
+$ENDCMP
+#
+#End Doc Library
