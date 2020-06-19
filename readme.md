@@ -60,21 +60,23 @@ What follows below is highly detailed technical documentation. The [user guide][
 ## Design
 The display is a recreation of sixteen segment alphanumeric displays in a format that is physically larger than anything available on the viewing front, as well as thinner. The modular segments can be combined to make a display of any length. It is designed to be easy to use and accessible. The physical design is based on stacking layers to provide clearance, a diffusion layer, and encapsulation for the electronics. The minimalist design and 3:2 aspect ratio were chosen to make intergration very clean. There are no gaps between characters and when placed side-by-side, there is a flat near-seamless surface.
 
-![topAssembly]
+| NOON               | MDNT               | BASE               |
+| ------------------ | ------------------ | ------------------ |
+| ![SEG-16-RED-NOON] | ![SEG-16-RED-MDNT] | ![SEG-16-RED-BASE] |
 
 ### Hardware
 The planels are designed for efficent high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 67.20 g with 6 plastic rivets.
 
-[schematic]
+![schematic]
 
 A [schematic.pdf] is also avalible.
 
 #### LEDs
 The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (60x30 mil, or 1.5x0.8 mm) package is used for their wide accessability, providing a breadth of alternatives in color, lens projection angle, and brightness for possible subsitutions. The datsheets for the LEDs used for each model is provided in the table below.
 
-| Model             | MPN        | Detail          | Current Draw |
-| ----------------- | ---------- | --------------- | ------------ |
-| `SEG-16-RED-XXXX` | [KT-0603R] | ![IMG-KT-0603R] | [asciiCurr]  |
+| Model             | MPN        | Detail          | Current Draw    |
+| ----------------- | ---------- | --------------- | --------------- |
+| `SEG-16-RED-XXXX` | [KT-0603R] | ![IMG-KT-0603R] | [asciiCurrent]  |
 
 #### Led Driver
 Titan Micro Electronic's [TM1640] ([english][TM1640ENG]) is used to control the LEDs. The device provides individual control of 128 LEDs in a 16x8 multiplexing configuration, has 8 levels of brightness adjustment, and provides a constant current supply of 20 mA. It is rated for only 5V but testing shows that, although with a slightly lower multiplexing frequency, it works quite well at 3.3V. Communication is over a clocked serial link with a custom protocol and register mappings control the outputs. The 16 grids are rows, while the eight segments are the columns.
@@ -95,7 +97,7 @@ STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sens
 ![IMG-STM8S003]
 
 #### Power supply
-The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has 100 uF + 10 uF of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and charachters [available][asciiCurr] along with mesurement metadology.
+The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has 100 uF + 10 uF of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and charachters [available][asciiCurrent] along with mesurement metadology.
 
 Maximum power draw is 1.6W at max brightness and all segments lit. Temperature rise above ambient after two hours is [temp rise].
 
@@ -474,6 +476,7 @@ As with everything, this too is built on the gracious support of previous projec
 [TM1640ENG]:              ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640-ENG.pdf
 [STM8S003]:               ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.pdf
 [0472861001]:             ./pcb/SEG-16-XXX-XXXX-L0/components/0472861001/0472861001.pdf
+[schematic.pdf]:          ./pcb/SEG-16-XXX-XXXX-L0/SEG-16-XXX-XXXX-L0.pdf
 
 <!-- Links -->
 [Octopart]:               https://octopart.com/bom-tool/6sdiCse8
@@ -494,7 +497,7 @@ As with everything, this too is built on the gracious support of previous projec
 
 <!-- Internal Links -->
 [userGuide]:              ./docs/userGuide.md
-[asciiCurr]:              ./docs/asciiCurr.md
+[asciiCurrent]:           ./docs/asciiCurrent.md
 [configTable]:            ./docs/configTable.md
 
 <!-- Images -->
@@ -502,9 +505,12 @@ As with everything, this too is built on the gracious support of previous projec
 [SEGMENT]:                ./docs/title/SEGMENT.png                "SEGMENT Rendered on display"
 [DISPLAY]:                ./docs/title/DISPLAY.png                "DISPLAY Rendered on display"
 [isoArray]:               ./docs/product/isoArray.jpg             "Isometric view of a few panels lit with time"
-[topAssembly]:            ./docs/product/topAssembly.jpg          "Top view of a panels"
+[SEG-16-RED-NOON]:        ./docs/product/SEG-16-RED-NOON.jpg      "Top view of a NOON"
+[SEG-16-RED-MDNT]:        ./docs/product/SEG-16-RED-MDNT.jpg      "Top view of a MDNT"
+[SEG-16-RED-BASE]:        ./docs/product/SEG-16-RED-BASE.jpg      "Top view of a BASE"
 [angledShow]:             ./docs/product/angledShow.jpg           "Angled shot of two panels"
 [cycleGif]:               ./docs/product/char4M.gif               "Animated gif of full ASCII cycle"
+[schematic]:              ./docs/assembly/schematic.png
 
 <!-- Config -->
 [config-back]:            ./docs/config/backPanel.png

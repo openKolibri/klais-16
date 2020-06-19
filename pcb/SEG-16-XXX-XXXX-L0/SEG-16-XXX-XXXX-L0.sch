@@ -4587,14 +4587,14 @@ Wire Wire Line
 	1650 4400 1650 4250
 Wire Wire Line
 	1650 4250 1750 4250
-Text Notes 750  5000 1    50   ~ 0
+Text Notes 700  5000 1    50   ~ 0
 Microcontroller
 Wire Notes Line
-	3600 5050 650  5050
+	3600 5050 600  5050
 Wire Notes Line
-	650  5050 650  2700
+	600  5050 600  2700
 Wire Notes Line
-	650  2700 3600 2700
+	600  2700 3600 2700
 Wire Notes Line
 	3600 2700 3600 5050
 $Comp
