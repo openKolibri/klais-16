@@ -362,9 +362,9 @@ Switch to IM at 20k-100k units.
 #### COB Custom ASIC
 Flipchip LEDs with COB fully intergrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 10 mHz clock. 
 
-[Hey! Let me dream, okay]
+[Hey, a girl can dream. Chip die image]
 
-Engineering and silicon die cost around $20k tooling (maybe? I don't really know, but i can probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units. 
+Engineering and silicon die cost around $50k tooling (maybe? I don't really know, but I could probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units. 
 
 ### Programer
 The chip needs to be programmed with the firmware and tested for proper operation before sending out to customers. Two programmers are designed. First, a low cost simple programmer for smaller quantities and available on specical request for those who want to customize the firmware, and the other is a completely independent production-ready programmer and tester.
@@ -546,7 +546,7 @@ As with everything, this too is built on the gracious support of previous projec
 [imProto]:                ./docs/assembly/imProto.png
 
 <!-- Programer -->
-[minimalProgramer]:       ./docs/programer/minimalProgramer.png
+[minimalProgramer]:       ./docs/programer/minimalProgramer.jpg
 [productionProgramer]:    ./docs/programer/productionProgramer.png
 
 <!-- Components -->
