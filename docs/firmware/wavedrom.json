@@ -1,0 +1,10 @@
+{signal: [
+  {},  {}, {},
+  {name: 'clk', wave: 'h.lhlhlhlhlhlhlhlhlh.', node: '...........', phase: 0.5},
+  {name: 'data', wave: '102.3.4.5.6.7.8.9.01', node: '.....................', 
+   data: ["Bit 0", "Bit 1", "Bit 2","Bit 3", "Bit 4", "Bit 5","Bit 6","Bit 7"]
+  },
+  {                                          node: '.s.................e'}, 
+  {},{},{}
+  
+], edge: ['s<->e Single Byte'] }

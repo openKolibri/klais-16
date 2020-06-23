@@ -40,21 +40,32 @@ What follows below is highly detailed technical documentation. The [user guide][
       * [Configuration](#configuration)
       * [Compiling](#compiling)
       * [Flashing](#flashing)
+  * [Absolute Maximum Ratings](#absolute-maximum-ratings)
+  * [Guaranteed Ratings](#guaranteed-ratings)
   * [Manufacturing](#manufacturing)
     * [BOM](#bom)
-    * [PCB Info]()
-    * [Programer]()
-      * [Minimal]()
-      * [Production]()
-    * [PCB-Assembly]()
-    * [Physical Assembly]()
-    * [Labels]()
-    * [Invenotry and QC]()
-  * [Certificaitons]()
-  * [Licence]()
-  * [Attribution]()
-    * [Fonts]()
-    * [Libraries]()
+    * [PCB-Assembly](#pcb-assembly)
+    * [Physical Assembly](#physical-assembly)
+    * [Production Scaling](#production-sclaing)
+      * [PCB Stack](#pcb-stack)
+      * [Die Cut](#die-cut)
+      * [Injection Moulding](#injection-moulding)
+      * [Custom ASIC](#custom-asic)
+    * [Programer](#programer)
+      * [Minimal](#minimal)
+      * [Production](#production)
+    * [Artwork](#artwork)
+    * [Labels](#labels)
+    * [Invenotry and QC](#inventory-and-qc)
+    * [Part Numbers](#part-numbers)
+  * [Safety](#safety)
+  * [Certificaitons](#certificaitons)
+  * [Licence](#licence)
+  * [Attribution](#attribution)
+    * [Fonts](#fonts)
+    * [Libraries](#libraries)
+  * [Reccomended Reading](#reccomended-reading)
+  * [ToDo](#todo)
 
 
 ## Design
@@ -168,7 +179,7 @@ The holes and hardware provide a number of options for assembly and mounting.
 The firmware is written in C and is fully interrupt driven. It uses the [STM8 standard periphiral library][STM8SPL] (SPL) and provides multiple modes of controlling the display through commands. All code shown is simplified pseudocode.
 
 #### Modes
-By default the display boots in the `ASCII` character mode operating as a state-machine making changes based on each byte received. When enough bytes have been received for the command, the device shifts back into `ASCII` mode.
+By default the display boots in the `ASCII` character mode operating as a state-machine making changes based on each byte received. When enough bytes have been received for the command, the device shifts back into `ASCII` mode. 
 
 | Mode       | Control Byte | Bytes | Notes                       |
 | ---------- | ------------ | -----:| --------------------------- |
@@ -177,20 +188,18 @@ By default the display boots in the `ASCII` character mode operating as a state-
 | LED        | 0x12 `DC2`   |    16 | Control individual LEDs     |
 | Brightness | 0x13 `DC3`   |     1 | Set brightness              |
 
+**Only ASCII mode is verified in firmware version 0.6 other modes are in beta** 
+
 #### UART
 The UART hardware is used to receive and transmit data from a module to another. Communication is through an 8 bit NRZ with one start bit and one stop bit encoding with no pairity and the default baud rate is `115200 bps`. The voltage levels are the module power voltage, nominally `5V`.
 
 The UART is initialized on boot and the recieve interrupt is enabled. When a new character has been read in the receive buffer, the interrupt fires.
 
 ##### RX
-
-Based on the recieve mode loads the new data into either the recive buffer... 
+Based on the recieve mode the new data is loaded into the recieve buffer. The number of consequtive bytes read is dependent on the modethat is set. A mode byte recieved after mode has been reset will change the mode as well. The transmit interupt is fired when a new byte is recived and the buffer is full depending on the current recieve mode.
 
 ##### TX
-
-I'm going to need to go really in depth for this...
-This is really complicated to explain, even to myself.
-I wish I had a technical writer 
+The first byte is sent by the interupt trigger. Depending on the transmit mode, the interupts continue to fire stepping down through the buffer, until it is empty, outputting the data in the same format as it was recieved.
 
 #### Brightness
 There are nine brightness levels including blanking. They are accessed with sending the bringess?? mode selector followed by the brightness code.
@@ -241,25 +250,42 @@ TIMER_INTERRUPT(){
 ```
 
 #### Display Driver
+The display driver is a minimal custom library. The display driver is controlled over a clocked serial link with a custom protocol. The LEDs are multiplexed based on the internal memory that stores a 1b value for each LED.
 
-[Register map?]
+The chip has only a few registers, most of which make up the current LED states. They are all described in the header file, and fall into three sections.
+
+- Data Commands
+- Grid Memeory
+- Display Brightness
 
 ##### Protocol
+A few requrements define the protocol.
 
-[Protocl explanation]
+- Default state for both clock and data is high
+- Start condition is data going low followed by clock going low
+- A bit is read when the clock is pulsed positive
+- Data cannot change while clock is high
+- End condition is clock high followed by data high
+- 8 bits per byte, LSB First 
 
-[Display waveforms?]
 [Logic diagram]
 
-##### LED Number
+Registers are set by sending a command byte followed by a optional data byte based on the command. A set of commands can be sent if auto incrememnet mode is set by not fulfilling the end condition and sending the next byte immedeatly.
 
-Diode number to grid and seg
+[Display waveform]
+
+##### LED Number
+The LEDs are placed in a grid like pattren so a conversion is needed to map each LED to the segment it is in. [segmentMapping.h] contains arrays that map the LED's refrence desegnator to each segment. This still need to be converted into the segments and grid from the LED number. The formula below is used to make those conversions.
+
+```
 GRID = ((REF-1) / 8) + 1
 SEG = (REF-1) % 8
-
+```
 
 ##### Segment Order
+Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the leds are mapped to the segments the segments are mapped to the ASCII chatachter set. [sixteenSegments.h] contatins which segments need to be lit for each chatachter, the notation used in both files refers to the segments in colockwise order going in as is convertion with sixteen segment displays. 
 
+[sixteen segment display segment letters]
 
 #### Configuration
 On boot the seven GPIO for the configuration pads have their internal pullups enabled and then are set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration. 
@@ -284,13 +310,22 @@ It is set up to be compile through [PlatformIO]. More information can be found t
 #### Flashing
 The [programming pads](#programing) on the back are used to program the module. A ST-Link V2 with the SWIM protocol is used to upload the firmware.
 
-Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings. We also use a custom bash script internally that uploads, tests, and updates our database.
+Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings. 
 
-
+We also use a custom bash script internally that uploads, tests, and updates our database. It uses STM8Flash on Linux machnies and ST Visual Programer on WSL.
 
 ## Absolute maximum ratings
+**To be tested, don't have the power supply, or really the heart to kill a module just yet.**
+Works fine down to 3.3V
+
 ## Guaranteed ratings
 
+| Mesurement   | Value | Unit | Tolerence |
+| ------------ | -----:| ---- | --------- |
+| Power Supply |   5.0 | V    | ± 0.2     |
+| Max current  |   319 | mA   | ± 5%      |
+| Max Temp     |    60 | C    |           |
+| Min Temp     |   -20 | C    |           |
 
 ## Manufacturing
 Designing for maufacturing was a large portion of this project. This was done through many approaches and on a number of fronts.
@@ -359,8 +394,8 @@ A test model was made with 2.5 deg draft angles and 1.2mm wall thickness for ABS
 
 Switch to IM at 20k-100k units.
 
-#### COB Custom ASIC
-Flipchip LEDs with COB fully intergrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 10 mHz clock. 
+#### Custom ASIC
+Flipchip LEDs with COB fully intergrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 72 MHz PLL clock. 
 
 [Hey, a girl can dream. Chip die image]
 
@@ -388,7 +423,7 @@ The back has a location for a 38 mm x 13 mm label from a Brother 38 mm continuou
 ![config-label]
 
 ### Invenotry and QC
-Inventory can then be managed with QR coded serialized tags. The serialization also provides better QC as it allows failure analysis and tracking in case of customer complaints to the batch and assembly level.
+Inventory can then be managed with QR coded serialized tags. The serialization also provides better QC as it allows failure analysis and tracking in case of issues traceable to the batch and assembly level.
 
 ### Part Numbers
 The manufacturer part number is based on the following scheme.
@@ -417,7 +452,9 @@ And `BBBB` denotes the face type
 | `IM  ` | Injection Moulded               |
 
 ## Safety
-Since the assembly is made from FR4, it is highly fire retardent and will not burn after a flame is removed. The edges are milled, but it is possible to have small pieces that could cause cuts or become embedded in the skin. If sanding or milling the board, use a respirator as fiberglass dust is carcogenic.
+The assembly is almost excluively made from FR4, it is highly fire retardent and will not burn after a flame is removed. 
+
+The edges are milled, but it is possible to have small pieces that could cause cuts, abrasions, or become embedded in the skin. If sanding or milling the board, use a respirator as fiberglass dust is carcogenic.
 
 The boards are assembled in a lead-free process and all components are RHOS certified.
 
@@ -426,13 +463,13 @@ The low voltage 3-5.5V as well as the currents used pose very little risk to hea
 ## Certifications
 Certifications take time and effort but will make a better product by guaranteeing its safety to users and let them use it in other projects. The table below shows the order we will be trying to obtain certifications.
 
-| Cetrtifing Authority                     | Status                    |
-| ---------------------------------------- | ------------------------- |
-| OSHW                                     | No                        |
-| CE                                       | No  (Self Certificiton)   |
-| FCC                                      | No  (Self Certificiton)   |
-| UL Registered componet                   | No  (yearly fee)          |
-| WEEE                                     | No  (yearly fee)          |
+| Cetrtifing Authority     | Status                    |
+| -------------------------| ------------------------- |
+| OSHW                     | [DE000087]                |
+| CE                       | No  (Self Certificiton)   |
+| FCC                      | No  (Self Certificiton)   |
+| UL Registered Component  | No  (yearly fee)          |
+| WEEE                     | No  (yearly fee)          |
 
 ## Licence
 The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Everything is released under permissive coplyleft licecnes, and copies of all licenses are included.
@@ -443,7 +480,7 @@ The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Ever
 | Firmware      | [GNU GPL]    |     3.0 |
 | Documentation | [CC BY-SA]   |     4.0 |
 
-Copies of all licenses are required with the distribution of files. All files are available in easy tom idify types for remixing. Please purchase original products from Kolibri to support further products, customer service, and research.
+Copies of all licenses are required with the distribution of files. All files are available in easy to modify types for remixing. Please purchase original products from Kolibri to support further products, design, and research.
 
 ## Attribution
 As with everything, this too is built on the gracious support of previous projects.
@@ -452,7 +489,7 @@ As with everything, this too is built on the gracious support of previous projec
 - Inkscape
 - Blender
 - SDCC
-- Stm8Flash
+- STM8Flash
 
 ### Fonts
 - [DejaVu]
@@ -556,6 +593,9 @@ As with everything, this too is built on the gracious support of previous projec
 [IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg
 [IMG-TAJA106K016RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJA106K016RNJ/TAJA106K016RNJ.jpg
 [IMG-TAJB107K006RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJB107K006RNJ/TAJB107K006RNJ.jpg
+
+<!-- Certifications -->
+[DE000087]:               https://certification.oshwa.org/DE000087.html
 
 <!-- Licence -->
 [CERN-OHL-S]:             ./pcb/LICENSE
