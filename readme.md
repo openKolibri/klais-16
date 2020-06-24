@@ -21,7 +21,7 @@ What follows below is highly detailed technical documentation. The [user guide][
       * [Microcontroller](#microcontroller)
       * [Power supply](#power-supply)
       * [Connections](#connections)
-        * [Programing](#programing)
+        * [Programming](#programming)
         * [Dataflow](#dataflow)
         * [Config Pads](#config-pads)
         * [Key Connector](#key-connector)
@@ -51,7 +51,7 @@ What follows below is highly detailed technical documentation. The [user guide][
       * [Die Cut](#die-cut)
       * [Injection Moulding](#injection-moulding)
       * [Custom ASIC](#custom-asic)
-    * [Programer](#programer)
+    * [Programmer](#programmer)
       * [Minimal](#minimal)
       * [Production](#production)
     * [Artwork](#artwork)
@@ -405,18 +405,18 @@ Flipchip LEDs with COB fully integrated controller. HDL gateware design to begin
 
 Engineering and silicon die cost around $50k tooling (maybe? I don't really know, but I could probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units. 
 
-### Programer
+### Programmer
 The chip needs to be programmed with the firmware and tested for proper operation before sending out to customers. Two programmers are designed. First, a low cost simple programmer for smaller quantities and available on specical request for those who want to customize the firmware, and the other is a completely independent production-ready programmer and tester.
 
 #### Minimal
 Them minimal program has holes for alignment corresponding to the top row, and four spring pins. These connect out to the programming header which can then be corrected to an ST-Link V2. The alignment holes have M3x8 screws and nuts which were added to create alignment pins. The board to be programmed is aligned with the pin and held down while programming.
 
-![minimalProgramer]
+![minimalProgrammer]
 
 #### Production
 The production programmer is a program and test jig. The boards are slipped under the bottom overhang and pushed down until the lever snaps and holds them in place. Then a full test suite can be run, checking the input and output, programming with multiple firmwares and reading back system outputs to verify that the device works properly.
 
-![productionProgramer]
+![productionProgrammer]
 
 ### Artwork
 The artwork on the back is a trademark and protected by copyright. This can not be duplicated on derivative works. It consists of the Kolibri bird, copyright and designer notices, certifications, a location for labeling, as well as the URL and QR code to documentation.
@@ -598,9 +598,9 @@ As with everything, this too is built on the gracious support of previous projec
 [L3-DIE]:                 ./docs/assembly/L3-DIE.png                                             "Layer 3 die cut outline"
 [imProto]:                ./docs/assembly/imProto.png                                            "Prototype injection moulding model render"
 
-<!-- Programer -->
-[minimalProgramer]:       ./docs/programer/minimalProgramer.jpg                                  "Minimal programer picture"
-[productionProgramer]:    ./docs/programer/productionProgramer.png                               "Production programer render"
+<!-- Programmer -->
+[minimalProgrammer]:       ./docs/programmer/minimalProgrammer.jpg                                  "Minimal programmer picture"
+[productionProgrammer]:    ./docs/programmer/productionProgrammer.png                               "Production programmer render"
 
 <!-- Components -->
 [IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led componet image"
