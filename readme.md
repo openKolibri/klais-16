@@ -3,7 +3,7 @@
 ![DISPLAY]
 
 # Sixteen Segment Display
-The look of classic signage, be it neon tubes, wrought iron, or the use of distinctive typography and negative space, has a particular appeal. Unfortunately, the art form is dwindling due to the flexibiltiy and flash that comes with newer LED arrays. Their distinctive styles have been giving way for the monotony of RGB LED panels.
+The look of classic signage, be it neon tubes, wrought iron, or the use of distinctive typography and negative space, has a particular appeal. Unfortunately, the art form is dwindling due to the flexibility and flash that comes with newer LED arrays. Their distinctive styles have been giving way for the monotony of RGB LED panels.
 
 ![cycleGif]
 
@@ -108,7 +108,7 @@ STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sens
 ![IMG-STM8S003]
 
 #### Power supply
-The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with mesurement methodology.
+The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with measurement methodology.
 
 Maximum power draw is 1.6W at max brightness and all segments lit. Temperature rise above ambient after two hours is 15.9°C (61°F).
 
@@ -132,7 +132,7 @@ The four labeled pads near the top of the module are for programming. The STM8S 
 ![config-pgrm]
 
 ##### Dataflow
-The five pads on each side are the connections that provide the data, as well as power rails, from one board to another. For basic funcitonality, lining up the boards and soldering the top three pads (`GND`, `TX/RX`, and `+5V`) is all that is needed, although soldering all five will provide more power rails and cause no issues.
+The five pads on each side are the connections that provide the data, as well as power rails, from one board to another. For basic functionality, lining up the boards and soldering the top three pads (`GND`, `TX/RX`, and `+5V`) is all that is needed, although soldering all five will provide more power rails and cause no issues.
 
 ![config-dataflow]
 
@@ -142,7 +142,7 @@ If needed, the inverted configuration also provides the option of having two dec
 
 ![config-dataflowInv]
 
-The moves the `RX` and `TX` lines ot the correct sides to be placed inline with normally orineted modules.
+The moves the `RX` and `TX` lines to the correct sides to be placed inline with normally oriented modules.
 
 ##### Config Pads
 The back has seven configuration pads that provide different settings and are checked on boot. By default, they are all unbridged. The configuration pads are to be selected with solder jumpers.
@@ -150,7 +150,7 @@ The back has seven configuration pads that provide different settings and are ch
 ![config-config]
 
 ##### Key Connector
-The front contains two optional upopulated spring connectors Molex [0472861001]. These provide functionality if the thickness of the panel or reconfigurability is the main concern. By removing any solder joints on the back, and transmitting the data and power through the keyed connector. The thickness is limited to `5.8 mm`. The small PCB keys also allow assembly and construction of quick and easily reconfigurable arrays. The connectors are not always used, so they are not installed by default since they add cost and are not expected to be used by most.
+The front contains two optional unpopulated spring connectors Molex [0472861001]. These provide functionality if the thickness of the panel or reconfigurability is the main concern. By removing any solder joints on the back, and transmitting the data and power through the keyed connector. The thickness is limited to `5.8 mm`. The small PCB keys also allow assembly and construction of quick and easily reconfigurable arrays. The connectors are not always used, so they are not installed by default since they add cost and are not expected to be used by most.
 
 ![config-keyed]
 
@@ -194,10 +194,10 @@ By default the display boots in the `ASCII` character mode operating as a state-
 #### UART
 The UART hardware is used to receive and transmit data from a module to another. Communication is through an 8 bit NRZ with one start bit and one stop bit encoding with no pairity and the default baud rate is `115200 bps`. The voltage levels are the module power voltage, nominally `5V`.
 
-The UART is initialized on boot and the recieve interrupt is enabled. When a new character has been read in the receive buffer, the interrupt fires.
+The UART is initialized on boot and the receive interrupt is enabled. When a new character has been read in the receive buffer, the interrupt fires.
 
 ##### RX
-Based on the recieve mode the new data is loaded into the recieve buffer. A number of consecutive bytes read is dependent on the mode that is set. A mode byte received after mode has been reset will change the mode as well. The transmit interrupt is fired when a new byte is received and the buffer is full, depending on the current receive mode.
+Based on the receive mode the new data is loaded into the receive buffer. A number of consecutive bytes read is dependent on the mode that is set. A mode byte received after mode has been reset will change the mode as well. The transmit interrupt is fired when a new byte is received and the buffer is full, depending on the current receive mode.
 
 ##### TX
 The first byte is sent by the interrupt trigger. Depending on the transmit mode, the interrupts continue to fire, stepping down through the buffer until it is empty, outputting the data in the same order as it was received.
@@ -229,7 +229,7 @@ UART_RX_INTERRUPT() {
 }
 ```
 
-Everytime a new character is received in the RX buffer, a timeout is started of 1 ms (*to be replaced with 2.5 byte time based on baud rate*). If a new character comes before the timeout is reached, it is reset again. When the timeout is reached, the overflow interrupt is triggered. In the interrupt, the further interrupts are disabled and then the display is drawn based on the TX mode.
+Every time a new character is received in the RX buffer, a timeout is started of 1 ms (*to be replaced with 2.5 byte time based on baud rate*). If a new character comes before the timeout is reached, it is reset again. When the timeout is reached, the overflow interrupt is triggered. In the interrupt, the further interrupts are disabled and then the display is drawn based on the TX mode.
 
 ```c
 TIMER_INTERRUPT(){
@@ -256,7 +256,7 @@ The display driver is a minimal custom library. The display driver is controlled
 The chip has only a few registers, most of which make up the current LED states. They are all described in the header file and fall into three sections.
 
 - Data Commands
-- Grid Memeory
+- Grid Memory
 - Display Brightness
 
 ##### Protocol
@@ -307,11 +307,11 @@ On boot, the seven GPIO for the configuration pads have their internal pullups e
 Currently the firmware uses no configuration options.
 
 #### Compiling
-It is setup to be compiled through [PlatformIO]. More information can be found through its [doucmentation][platformIODocs]. Changes may be made to the settings in the `ini` file.
+It is setup to be compiled through [PlatformIO]. More information can be found through its [documentation][platformIODocs]. Changes may be made to the settings in the `ini` file.
 
 
 #### Flashing
-The [programming pads](#programing) on the back are used to program the module. An ST-Link V2 with the SWIM protocol is used to upload the firmware.
+The [programming pads](#programming) on the back are used to program the module. An ST-Link V2 with the SWIM protocol is used to upload the firmware.
 
 Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings.
 
@@ -332,10 +332,10 @@ Works fine down to 3.3V.
 | Min Temp     |   -20 | C    |           |
 
 ## Manufacturing
-Designing for maufacturing was a large portion of this project. This was done through many approaches on a number of fronts.
+Designing for manufacturing was a large portion of this project. This was done through many approaches on a number of fronts.
 
 ### BOM
-The BOM was selected with parts that are common to the Chinese high-volume manufacturing market, have strong supply chains, as well as many alternatives in case a supplier stops manufacture. The number of unique parts was kept to a minimum and the maximum ammount of features can be implemented with "free" options, like SMD pads. The table of BOM is shown below.
+The BOM was selected with parts that are common to the Chinese high-volume manufacturing market, have strong supply chains, as well as many alternatives in case a supplier stops manufacture. The number of unique parts was kept to a minimum and the maximum amount of features can be implemented with "free" options, like SMD pads. The table of BOM is shown below.
 
 | REF       | QTY | Manufacturer               | MPN              | Description                                 |
 | --------- | ---:| -------------------------- | ---------------- | ------------------------------------------- |
@@ -390,7 +390,7 @@ The die cut panels replace the top three panels with 1/16" plastic that is die c
 Switch to die cut at 1k-10k units.
 
 #### Injection Moulding
-Injection moulded panel will replace the front three panels with a single injection moulded plastic part, as well as the screws. Providing the option to either punch through from the front to get the same M3 holes, or screw in from the back to have a completely clean front panel. The IM part also provides other benefits, such as, a more consistent texture on the whole panel, and a high contrast front that has no discernable pattern when off.
+Injection moulded panel will replace the front three panels with a single injection moulded plastic part, as well as the screws. Providing the option to either punch through from the front to get the same M3 holes, or screw in from the back to have a completely clean front panel. The IM part also provides other benefits, such as, a more consistent texture on the whole panel, and a high contrast front that has no discernible pattern when off.
 
 ![imProto]
 
@@ -406,7 +406,7 @@ Flipchip LEDs with COB fully integrated controller. HDL gateware design to begin
 Engineering and silicon die cost around $50k tooling (maybe? I don't really know, but I could probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units.
 
 ### Programmer
-The chip needs to be programmed with the firmware and tested for proper operation before sending out to customers. Two programmers are designed. First, a low cost simple programmer for smaller quantities and available on specical request for those who want to customize the firmware, and the other is a completely independent production-ready programmer and tester.
+The chip needs to be programmed with the firmware and tested for proper operation before sending out to customers. Two programmers are designed. First, a low cost simple programmer for smaller quantities and available on special request for those who want to customize the firmware, and the other is a completely independent production-ready programmer and tester.
 
 #### Minimal
 Them minimal program has holes for alignment corresponding to the top row, and four spring pins. These connect out to the programming header which can then be corrected to an ST-Link V2. The alignment holes have M3x8 screws and nuts which were added to create alignment pins. The board to be programmed is aligned with the pin and held down while programming.
@@ -456,7 +456,7 @@ And `BBBB` denotes the face type
 | `IM  ` | Injection Moulded               |
 
 ## Safety
-The assembly is almost exclusively made from FR4. It is highly fire retardent and will not burn after a flame is removed.
+The assembly is almost exclusively made from FR4. It is highly fire retardant and will not burn after a flame is removed.
 
 The edges are milled, but it is possible to have small pieces that could cause cuts, abrasions, or become embedded in the skin. If sanding or milling the board, use a respirator as fiberglass dust is carcinogenic.
 
@@ -476,7 +476,7 @@ Certifications take time and effort but will make a better product by guaranteei
 | WEEE                     | No  (yearly fee)          |
 
 ## Licence
-The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Everything is released under permissive coplyleft licenses, and copies of all licenses are included.
+The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Everything is released under permissive copyleft licenses, and copies of all licenses are included.
 
 | Sector        | License      | Verison |
 | ------------- | ------------ | -------:|
