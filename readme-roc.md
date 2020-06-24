@@ -59,7 +59,7 @@ What follows below is highly detailed technical documentation. The [user guide][
     * [Inventory and QC](#inventory-and-qc)
     * [Part Numbers](#part-numbers)
   * [Safety](#safety)
-  * [Certifications](#certifications)
+  * [Certificaitons](#certificaitons)
   * [Licence](#licence)
   * [Attribution](#attribution)
     * [Fonts](#fonts)
