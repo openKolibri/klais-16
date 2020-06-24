@@ -103,7 +103,7 @@ This chip is made specifically for the Chinese market and may be hard to source 
 | Wuxi I-CORE Electronics | AiP1640  |
 
 #### Microcontroller
-STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sensitive applications, but provides a reasonable host of features. It has a wide votlage range of `2.95V` to `5.5V`, internal 16Mhz clock, UART that can be clocked at up to 1Mbps, plenty of timers, and 28 I/O. As well as other features that are not being used like a 10b ADC, SPI/I2C hardware, and low power modes.
+STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sensitive applications, but provides a reasonable host of features. It has a wide voltage range of `2.95V` to `5.5V`, internal 16Mhz clock, UART that can be clocked at up to 1Mbps, plenty of timers, and 28 I/O. As well as other features that are not being used like a 10b ADC, SPI/I2C hardware, and low power modes.
 
 ![IMG-STM8S003]
 
