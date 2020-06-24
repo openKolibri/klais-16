@@ -69,21 +69,21 @@ What follows below is highly detailed technical documentation. The [user guide][
 
 
 ## Design
-The display is a recreation of sixteen segment alphanumeric displays in a format that is physically larger and thinner than anything available on the viewing front. The modular segments can be combined to make a display of any length. It is designed to be easy to use and accessible. The physical design is based on stacking layers to provide clearance, a diffusion layer, and encapsulation for the electronics. The minimalist design and 3:2 aspect ratio were chosen to make intergration very clean. There are no gaps between characters and when placed side-by-side, there is a flat near-seamless surface.
+The display is a recreation of sixteen segment alphanumeric displays in a format that is physically larger and thinner than anything available on the viewing front. The modular segments can be combined to make a display of any length. It is designed to be easy to use and accessible. The physical design is based on stacking layers to provide clearance, a diffusion layer, and encapsulation for the electronics. The minimalist design and 3:2 aspect ratio were chosen to make integration very clean. There are no gaps between characters and when placed side-by-side, there is a flat near-seamless surface.
 
 | NOON               | MDNT               | BASE               |
 | ------------------ | ------------------ | ------------------ |
 | ![SEG-16-RED-NOON] | ![SEG-16-RED-MDNT] | ![SEG-16-RED-BASE] |
 
 ### Hardware
-The planels are designed for efficent high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 63.97 g with 6 plastic rivets.
+The panels are designed for efficient high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 63.97 g with 6 plastic rivets.
 
 ![schematic]
 
-A [schematic.pdf] is also avalible.
+A [schematic.pdf] is also available.
 
 #### LEDs
-The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (60x30 mil, or 1.5x0.8 mm) package is used for their wide accessability, providing a breadth of alternatives in color, lens projection angle, and brightness for possible subsitutions. The datsheets for the LEDs used for each model is provided in the table below.
+The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (60x30 mil, or 1.5x0.8 mm) package is used for their wide accessibility, providing a breadth of alternatives in color, lens projection angle, and brightness for possible substitutions. The datasheets for the LEDs used for each model is provided in the table below.
 
 | Model             | MPN        | Detail          | Current Draw         |
 | ----------------- | ---------- | --------------- | -------------------- |
@@ -108,7 +108,7 @@ STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sens
 ![IMG-STM8S003]
 
 #### Power supply
-The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with measurement methodology.
+The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the integrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with measurement methodology.
 
 Maximum power draw is 1.6W at max brightness and all segments lit. Temperature rise above ambient after two hours is 15.9°C (61°F).
 
@@ -157,7 +157,7 @@ The front contains two optional unpopulated spring connectors Molex [0472861001]
 The solder jumper marked `RTN_EN` enables the return channel on the last board. If a chain of displays is used and needs to be chained to the next row, this will send the signal back though one of the spring connector pins and make it available on the first display making a for a cleaner run of signal between rows.
 
 #### Mounting
-The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a very close fit with a `3.1 mm` drill and though plated for a bit more ruggedness. A `#4` screw can be used as a imperial alternetive. They are not connected to any nets, have a `5.5 mm` anular ring for screw heads, and are masked so if screws are not used, the anular ring surface matches the rest of the panel.
+The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a very close fit with a `3.1 mm` drill and though plated for a bit more ruggedness. A `#4` screw can be used as a imperial alternative. They are not connected to any nets, have a `5.5 mm` annular ring for screw heads, and are masked so if screws are not used, the annular ring surface matches the rest of the panel.
 
 ![mountingDim]
 
@@ -192,7 +192,7 @@ By default the display boots in the `ASCII` character mode operating as a state-
 **Only ASCII mode is verified in firmware version 0.6 other modes are in beta**
 
 #### UART
-The UART hardware is used to receive and transmit data from a module to another. Communication is through an 8 bit NRZ with one start bit and one stop bit encoding with no pairity and the default baud rate is `115200 bps`. The voltage levels are the module power voltage, nominally `5V`.
+The UART hardware is used to receive and transmit data from a module to another. Communication is through an 8 bit NRZ with one start bit and one stop bit encoding with no parity and the default baud rate is `115200 bps`. The voltage levels are the module power voltage, nominally `5V`.
 
 The UART is initialized on boot and the receive interrupt is enabled. When a new character has been read in the receive buffer, the interrupt fires.
 
@@ -286,7 +286,7 @@ SEG = (REF-1) % 8
 ```
 
 ##### Segment Order
-Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the leds are mapped to the segments, the segments are mapped to the ASCII character set. [sixteenSegments.h] contains which segments need to be lit for each character, the notation used in both files refers to the segments in clockwise order going in as-is conversion with sixteen segment displays.
+Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the LEDs are mapped to the segments, the segments are mapped to the ASCII character set. [sixteenSegments.h] contains which segments need to be lit for each character, the notation used in both files refers to the segments in clockwise order going in as-is conversion with sixteen segment displays.
 
 ![segmentMap]
 
