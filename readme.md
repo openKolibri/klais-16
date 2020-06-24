@@ -7,7 +7,7 @@ The look of classic signage, be it neon tubes, wrought iron, or the use of disti
 
 ![cycleGif]
 
-The Display Series, in which this panel is the first item, was inspired by the early electronic displays still seen in relics bygone from an era of cigarette machines, electronics test equipment, and pinball machines. Its been modernized, enlarged, and made easily integrable into your own projects, while retaining its beauty and elegance.
+The *Klais Display* series, in which this panel is the first item, was inspired by the early electronic displays still seen in relics bygone from an era of cigarette machines, electronics test equipment, and pinball machines. Its been modernized, enlarged, and made easily integrable into your own projects, while retaining its beauty and elegance.
 
 ![isoArray]
 
@@ -69,14 +69,14 @@ What follows below is highly detailed technical documentation. The [user guide][
 
 
 ## Design
-The display is a recreation of sixteen segment alphanumeric displays in a format that is physically larger than anything available on the viewing front, as well as thinner. The modular segments can be combined to make a display of any length. It is designed to be easy to use and accessible. The physical design is based on stacking layers to provide clearance, a diffusion layer, and encapsulation for the electronics. The minimalist design and 3:2 aspect ratio were chosen to make intergration very clean. There are no gaps between characters and when placed side-by-side, there is a flat near-seamless surface.
+The display is a recreation of sixteen segment alphanumeric displays in a format that is physically larger and thinner than anything available on the viewing front. The modular segments can be combined to make a display of any length. It is designed to be easy to use and accessible. The physical design is based on stacking layers to provide clearance, a diffusion layer, and encapsulation for the electronics. The minimalist design and 3:2 aspect ratio were chosen to make intergration very clean. There are no gaps between characters and when placed side-by-side, there is a flat near-seamless surface.
 
 | NOON               | MDNT               | BASE               |
 | ------------------ | ------------------ | ------------------ |
 | ![SEG-16-RED-NOON] | ![SEG-16-RED-MDNT] | ![SEG-16-RED-BASE] |
 
 ### Hardware
-The planels are designed for efficent high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 67.20 g with 6 plastic rivets.
+The planels are designed for efficent high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 63.97 g with 6 plastic rivets.
 
 ![schematic]
 
@@ -85,12 +85,12 @@ A [schematic.pdf] is also avalible.
 #### LEDs
 The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (60x30 mil, or 1.5x0.8 mm) package is used for their wide accessability, providing a breadth of alternatives in color, lens projection angle, and brightness for possible subsitutions. The datsheets for the LEDs used for each model is provided in the table below.
 
-| Model             | MPN        | Detail          | Current Draw    |
-| ----------------- | ---------- | --------------- | --------------- |
-| `SEG-16-RED-XXXX` | [KT-0603R] | ![IMG-KT-0603R] | [asciiCurrent]  |
+| Model             | MPN        | Detail          | Current Draw         |
+| ----------------- | ---------- | --------------- | -------------------- |
+| `SEG-16-RED-XXXX` | [KT-0603R] | ![IMG-KT-0603R] | [RED][asciiCurrent]  |
 
 #### Led Driver
-Titan Micro Electronic's [TM1640] ([english][TM1640ENG]) is used to control the LEDs. The device provides individual control of 128 LEDs in a 16x8 multiplexing configuration, has 8 levels of brightness adjustment, and provides a constant current supply of 20 mA. It is rated for only 5V but testing shows that, although with a slightly lower multiplexing frequency, it works quite well at 3.3V. Communication is over a clocked serial link with a custom protocol and register mappings control the outputs. The 16 grids are rows, while the eight segments are the columns.
+Titan Micro Electronic's [TM1640] ([english][TM1640ENG]) is used to control the LEDs. The device provides individual control of 128 LEDs in a 16x8 multiplexing configuration, has 8 levels of brightness adjustment, and provides a constant current supply of `20 mA`. It is rated for only `5V` but testing shows that, although with a slightly lower multiplexing frequency, it works quite well at `3.3V`. Communication is over a clocked serial link with a custom protocol and register mappings control the outputs. The 16 grids are rows, while the eight segments are the columns.
 
 ![IMG-TM1640]
 
@@ -103,14 +103,14 @@ This chip is made specifically for the Chinese market and may be hard to source 
 | Wuxi I-CORE Electronics | AiP1640  |
 
 #### Microcontroller
-STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sensitive applications, but provides a reasonable host of features. It has a wide votlage range of 2.95V to 5.5V, internal 16Mhz clock, UART that can be clocked at up to 1Mbps, pleanty of timers, and 28 I/O. As well as other features that are not being used like a 10b ADC, SPI/I2C hardware, and low power modes.
+STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sensitive applications, but provides a reasonable host of features. It has a wide votlage range of `2.95V` to `5.5V`, internal 16Mhz clock, UART that can be clocked at up to 1Mbps, plenty of timers, and 28 I/O. As well as other features that are not being used like a 10b ADC, SPI/I2C hardware, and low power modes.
 
 ![IMG-STM8S003]
 
 #### Power supply
-The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has 100 uF + 10 uF of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and charachters [available][asciiCurrent] along with mesurement metadology.
+The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with mesurement methodology.
 
-Maximum power draw is 1.6W at max brightness and all segments lit. Temperature rise above ambient after two hours is [temp rise].
+Maximum power draw is 1.6W at max brightness and all segments lit. Temperature rise above ambient after two hours is 15.9°C (61°F).
 
 | Display  | `RED` Full Brightness (mA) | `RED` Min Brightness (mA) |
 | -------- | --------------------------:| -------------------------:|
@@ -154,6 +154,8 @@ The front contains two optional upopulated spring connectors Molex [0472861001].
 
 ![config-keyed]
 
+The solder jumper marked `RTN_EN` enables the return channel on the last board. If a chain of displays is used and needs to be chained to the next row, this will send the signal back though one of the spring connector pins and make it available on the first display making a for a cleaner run of signal between rows.
+
 #### Mounting
 The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a very close fit with a `3.1 mm` drill and though plated for a bit more ruggedness. A `#4` screw can be used as a imperial alternetive. They are not connected to any nets, have a `5.5 mm` anular ring for screw heads, and are masked so if screws are not used, the anular ring surface matches the rest of the panel. 
 
@@ -163,7 +165,7 @@ The holes and hardware provide a number of options for assembly and mounting.
 
 | Mounting Method           | Part Number                                      |Component          | Example               |
 | ------------------------- | ------------------------------------------------ | ----------------- | --------------------- |
-| Push Rivet 3 mm x 6.5 mm  | [R3065]                                          |                   |                       |
+| Push Rivet 3 mm x 7.5 mm  | [R3075]                                          | ![plasticRivet]   | ![rivetInstalled]     |
 | Spring pin 3 mm x 6 mm    | [97161A128]                                      | ![springPin]      | ![springPinInstalled] |
 | M3x8x0.5 and Nut          | [91292A112] [91828A211]                          | ![M3x8]           | ![M3x8Installed]      |
 | 15 mm Extrusion M3x10     | [Misumi HFS3], [OpenBeam], [Makerbeam XL]        | ![openbeamParts]  | ![openbeamInstalled]  |
@@ -173,7 +175,6 @@ The holes and hardware provide a number of options for assembly and mounting.
 | Zip Ties 3 mm             |                                                  |                   |                       |
 | #4 screw, machine or wood |                                                  |                   |                       |
 | Pop rivets, M3 or #4      |                                                  |                   |                       |
-
 
 ### Firmware
 The firmware is written in C and is fully interrupt driven. It uses the [STM8 standard periphiral library][STM8SPL] (SPL) and provides multiple modes of controlling the display through commands. All code shown is simplified pseudocode.
@@ -196,13 +197,13 @@ The UART hardware is used to receive and transmit data from a module to another.
 The UART is initialized on boot and the recieve interrupt is enabled. When a new character has been read in the receive buffer, the interrupt fires.
 
 ##### RX
-Based on the recieve mode the new data is loaded into the recieve buffer. The number of consequtive bytes read is dependent on the modethat is set. A mode byte recieved after mode has been reset will change the mode as well. The transmit interupt is fired when a new byte is recived and the buffer is full depending on the current recieve mode.
+Based on the recieve mode the new data is loaded into the recieve buffer. A number of consecutive bytes read is dependent on the mode that is set. A mode byte received after mode has been reset will change the mode as well. The transmit interrupt is fired when a new byte is received and the buffer is full, depending on the current receive mode.
 
 ##### TX
-The first byte is sent by the interupt trigger. Depending on the transmit mode, the interupts continue to fire stepping down through the buffer, until it is empty, outputting the data in the same format as it was recieved.
+The first byte is sent by the interrupt trigger. Depending on the transmit mode, the interrupts continue to fire, stepping down through the buffer until it is empty, outputting the data in the same order as it was received.
 
 #### Brightness
-There are nine brightness levels including blanking. They are accessed with sending the bringess?? mode selector followed by the brightness code.
+There are nine brightness levels including blanking. They are accessed with sending the brightness mode selector followed by the brightness code.
 
 | Level | Code (HEX) | Code (DEC) |
 | -----:| ---------- | ----------:|
@@ -217,7 +218,7 @@ There are nine brightness levels including blanking. They are accessed with send
 |    14 | 0x8F       |        143 |
 
 #### Timeout Refresh
-A display refresh timout is implemented so the display only updates when there is a pause in the data. This prevents the display from flickering with intermediate data when a stream of data is being loaded into an array. Also makes all the displays update at the exact same time since the time from the lsat byte is the same across all displays in an array.
+A display refresh timeout is implemented so the display only updates when there is a pause in the data. This prevents the display from flickering with intermediate data when a stream of data is being loaded into an array. This also updates all displays at the exact same time, since the time from the last byte is the same across all displays in an array.
 
 ```c
 UART_RX_INTERRUPT() {
@@ -228,7 +229,7 @@ UART_RX_INTERRUPT() {
 }
 ```
 
-Everytime a new character is received in the RX buffer, a timeout is started of 1ms (to be replaced with 2.5 byte time based on baud rate). If a new character comes before the timeout is reached, it is reset again. When the timeout is reached, the overflow interrupt is triggered. In the interrupt the further interrupts are disabled and then the display is drawn based on the TX mode.
+Everytime a new character is received in the RX buffer, a timeout is started of 1 ms (*to be replaced with 2.5 byte time based on baud rate*). If a new character comes before the timeout is reached, it is reset again. When the timeout is reached, the overflow interrupt is triggered. In the interrupt, the further interrupts are disabled and then the display is drawn based on the TX mode.
 
 ```c
 TIMER_INTERRUPT(){
@@ -252,14 +253,14 @@ TIMER_INTERRUPT(){
 #### Display Driver
 The display driver is a minimal custom library. The display driver is controlled over a clocked serial link with a custom protocol. The LEDs are multiplexed based on the internal memory that stores a 1b value for each LED.
 
-The chip has only a few registers, most of which make up the current LED states. They are all described in the header file, and fall into three sections.
+The chip has only a few registers, most of which make up the current LED states. They are all described in the header file and fall into three sections.
 
 - Data Commands
 - Grid Memeory
 - Display Brightness
 
 ##### Protocol
-A few requrements define the protocol.
+A few requirements define the protocol.
 
 - Default state for both clock and data is high
 - Start condition is data going low followed by clock going low
@@ -268,14 +269,16 @@ A few requrements define the protocol.
 - End condition is clock high followed by data high
 - 8 bits per byte, LSB First 
 
-[Logic diagram]
+![TM1640Timing]
 
-Registers are set by sending a command byte followed by a optional data byte based on the command. A set of commands can be sent if auto incrememnet mode is set by not fulfilling the end condition and sending the next byte immedeatly.
+Registers are set by sending a command byte followed by a optional data byte based on the command. A set of commands can be sent if auto increment mode is set by not fulfilling the end condition and sending the next byte immediately.
 
-[Display waveform]
+![dataCapImg]
+
+A Saleae logic [capture][dateCapFile] is also provided.
 
 ##### LED Number
-The LEDs are placed in a grid like pattren so a conversion is needed to map each LED to the segment it is in. [segmentMapping.h] contains arrays that map the LED's refrence desegnator to each segment. This still need to be converted into the segments and grid from the LED number. The formula below is used to make those conversions.
+The LEDs are placed in a grid-like pattern, so a conversion is needed to map each LED to the segment it's in. [segmentMapping.h] contains arrays that map the LED's reference designator to each segment. This still needs to be converted into the segments and grid from the LED number. The formula below is used to make those conversions.
 
 ```
 GRID = ((REF-1) / 8) + 1
@@ -283,12 +286,12 @@ SEG = (REF-1) % 8
 ```
 
 ##### Segment Order
-Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the leds are mapped to the segments the segments are mapped to the ASCII chatachter set. [sixteenSegments.h] contatins which segments need to be lit for each chatachter, the notation used in both files refers to the segments in colockwise order going in as is convertion with sixteen segment displays. 
+Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the leds are mapped to the segments, the segments are mapped to the ASCII character set. [sixteenSegments.h] contains which segments need to be lit for each character, the notation used in both files refers to the segments in clockwise order going in as-is conversion with sixteen segment displays. 
 
-[sixteen segment display segment letters]
+![segmentMap]
 
 #### Configuration
-On boot the seven GPIO for the configuration pads have their internal pullups enabled and then are set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration. 
+On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration. 
 
 ```c
   uint8_t config = 0x00;
@@ -304,19 +307,19 @@ On boot the seven GPIO for the configuration pads have their internal pullups en
 Currently the firmware uses no configuration options.
 
 #### Compiling
-It is set up to be compile through [PlatformIO]. More information can be found through its [doucmentation][platformIODocs]. Changes may be need to the settings in the `ini` file.
+It is setup to be compiled through [PlatformIO]. More information can be found through its [doucmentation][platformIODocs]. Changes may be made to the settings in the `ini` file.
 
 
 #### Flashing
-The [programming pads](#programing) on the back are used to program the module. A ST-Link V2 with the SWIM protocol is used to upload the firmware.
+The [programming pads](#programing) on the back are used to program the module. An ST-Link V2 with the SWIM protocol is used to upload the firmware.
 
 Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings. 
 
-We also use a custom bash script internally that uploads, tests, and updates our database. It uses STM8Flash on Linux machnies and ST Visual Programer on WSL.
+We also use a custom bash script internally that uploads, tests, and updates our database. It uses STM8Flash on Linux machines and ST Visual Programmer on WSL.
 
 ## Absolute maximum ratings
 **To be tested, don't have the power supply, or really the heart to kill a module just yet.**
-Works fine down to 3.3V
+Works fine down to 3.3V.
 
 ## Guaranteed ratings
 
@@ -328,7 +331,7 @@ Works fine down to 3.3V
 | Min Temp     |   -20 | C    |           |
 
 ## Manufacturing
-Designing for maufacturing was a large portion of this project. This was done through many approaches and on a number of fronts.
+Designing for maufacturing was a large portion of this project. This was done through many approaches on a number of fronts.
 
 ### BOM
 The BOM was selected with parts that are common to the Chinese high-volume manufacturing market, have strong supply chains, as well as many alternatives in case a supplier stops manufacture. The number of unique parts was kept to a minimum and the maximum ammount of features can be implemented with "free" options, like SMD pads. The table of BOM is shown below.
@@ -347,18 +350,18 @@ The BOM was selected with parts that are common to the Chinese high-volume manuf
 The [Octopart] BOM is also available, although not much use since the parts are not carried by US distributors.
 
 ### PCB-Assembly
-The PCB assembly is single-sided surface mount components only. Smallest componets are 0402. All can be PNP from tapes or tubes, and reflowed at once. There are three fiducials as well as three tolling holes on each board. The tooling holes are 1.152mm and the fiducials are 1.5mm x 3mm. There are 139 componets all of which are SMD, yielding a total of 322 solder joints.
+The PCB assembly is single-sided surface mount components only. The smallest components are 0402. All can be PNP from tapes or tubes, and reflowed at once. There are three fiducials as well as three tooling holes on each board. The tooling holes are 1.152 mm and the fiducials are 1.5 mm x 3 mm. There are 139 components all of which are SMD, yielding a total of 322 solder joints.
 
 ![assembly]
 
 ### Physical Assembly
-The panels are combined in order and be held together with 3 mm x 6.6 mm nylon 6/6 push rivets. This makes ingress into inventory much faster, and gives the customer another option to use for mounting since it's an uncommon part.
+The panels are combined in order and can be held together with 3 mm x 7.5 mm nylon 6/6 push rivets. This makes ingress into inventory much faster, and gives the customer another option to use for mounting since it's an uncommon part.
 
 ### Production Scaling
 The physical assembly varies in the volume of production. Further sections will be updated with information if we ever reach those volumes.
 
 #### PCB Stack
-First iteration is the PCB stack as that has no tooling cost and all can be order rom the same maufacturer. There are Four PCBs in the stack that make up the display.
+First iteration is the PCB stack as that has no tooling cost and all can be order from the same manufacturer. There are four PCBs in the stack that make-up the display.
 
 | Board | Height (mm) | Width (mm) | Layers | Copper Thickness | Thickness (mm) | Material | Min Drill | Trace Sizing | Mask  | Silk   | E-Test |
 | ----- | -----------:| ----------:| ------:| ----------------:| --------------:| -------- | ---------:| ------------:| ----- | ------ | ------ |
@@ -395,7 +398,7 @@ A test model was made with 2.5 deg draft angles and 1.2mm wall thickness for ABS
 Switch to IM at 20k-100k units.
 
 #### Custom ASIC
-Flipchip LEDs with COB fully intergrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 72 MHz PLL clock. 
+Flipchip LEDs with COB fully integrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 72 MHz PLL clock. 
 
 [Hey, a girl can dream. Chip die image]
 
@@ -452,9 +455,9 @@ And `BBBB` denotes the face type
 | `IM  ` | Injection Moulded               |
 
 ## Safety
-The assembly is almost excluively made from FR4, it is highly fire retardent and will not burn after a flame is removed. 
+The assembly is almost exclusively made from FR4. It is highly fire retardent and will not burn after a flame is removed. 
 
-The edges are milled, but it is possible to have small pieces that could cause cuts, abrasions, or become embedded in the skin. If sanding or milling the board, use a respirator as fiberglass dust is carcogenic.
+The edges are milled, but it is possible to have small pieces that could cause cuts, abrasions, or become embedded in the skin. If sanding or milling the board, use a respirator as fiberglass dust is carcinogenic.
 
 The boards are assembled in a lead-free process and all components are RHOS certified.
 
@@ -472,7 +475,7 @@ Certifications take time and effort but will make a better product by guaranteei
 | WEEE                     | No  (yearly fee)          |
 
 ## Licence
-The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Everything is released under permissive coplyleft licecnes, and copies of all licenses are included.
+The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Everything is released under permissive coplyleft licenses, and copies of all licenses are included.
 
 | Sector        | License      | Verison |
 | ------------- | ------------ | -------:|
@@ -480,7 +483,7 @@ The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Ever
 | Firmware      | [GNU GPL]    |     3.0 |
 | Documentation | [CC BY-SA]   |     4.0 |
 
-Copies of all licenses are required with the distribution of files. All files are available in easy to modify types for remixing. Please purchase original products from Kolibri to support further products, design, and research.
+Copies of all licenses are required with the distribution of files. All files are available in easy-to-modify types for remixing. Please purchase original products from Kolibri to support further products, design, and research.
 
 ## Attribution
 As with everything, this too is built on the gracious support of previous projects.
@@ -490,6 +493,7 @@ As with everything, this too is built on the gracious support of previous projec
 - Blender
 - SDCC
 - STM8Flash
+- PlatfromIO
 
 ### Fonts
 - [DejaVu]
@@ -514,6 +518,8 @@ As with everything, this too is built on the gracious support of previous projec
 [STM8S003]:               ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.pdf
 [0472861001]:             ./pcb/SEG-16-XXX-XXXX-L0/components/0472861001/0472861001.pdf
 [schematic.pdf]:          ./pcb/SEG-16-XXX-XXXX-L0/SEG-16-XXX-XXXX-L0.pdf
+[segmentMapping.h]:       ./firmware/include/segmentMapping.h
+[sixteenSegments.h]:      ./firmware/include/sixteenSegments.h
 
 <!-- Links -->
 [Octopart]:               https://octopart.com/bom-tool/6sdiCse8
@@ -521,6 +527,7 @@ As with everything, this too is built on the gracious support of previous projec
 [91292A112]:              https://www.mcmaster.com/91292A112
 [91828A211]:              https://www.mcmaster.com/91828A211
 [90690A037]:              https://www.mcmaster.com/90690A037
+[R3075]:                  https://www.amazon.com/gp/product/B07Z1XCS3M/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 [Misumi HFS3]:            https://us.misumi-ec.com/vona2/detail/110300465870/
 [Misumi HFS5]:            https://us.misumi-ec.com/vona2/detail/110302683830
 [MakerBeam]:              https://www.makerbeam.com/makerbeam/makerbeam-10x10mm-profile-lengths-anodised-in-clea/
@@ -538,61 +545,68 @@ As with everything, this too is built on the gracious support of previous projec
 [configTable]:            ./docs/configTable.md
 
 <!-- Images -->
-[SIXTEEN]:                ./docs/title/SIXTEEN.png                "SIXTEEN Rendered on display"
-[SEGMENT]:                ./docs/title/SEGMENT.png                "SEGMENT Rendered on display"
-[DISPLAY]:                ./docs/title/DISPLAY.png                "DISPLAY Rendered on display"
-[isoArray]:               ./docs/product/isoArray.jpg             "Isometric view of a few panels lit with time"
-[SEG-16-RED-NOON]:        ./docs/product/SEG-16-RED-NOON.jpg      "Top view of a NOON"
-[SEG-16-RED-MDNT]:        ./docs/product/SEG-16-RED-MDNT.jpg      "Top view of a MDNT"
-[SEG-16-RED-BASE]:        ./docs/product/SEG-16-RED-BASE.jpg      "Top view of a BASE"
-[angledShow]:             ./docs/product/angledShow.jpg           "Angled shot of two panels"
-[cycleGif]:               ./docs/product/char4M.gif               "Animated gif of full ASCII cycle"
-[schematic]:              ./docs/assembly/schematic.png
+[SIXTEEN]:                ./docs/title/SIXTEEN.png                                               "SIXTEEN Rendered on display"
+[SEGMENT]:                ./docs/title/SEGMENT.png                                               "SEGMENT Rendered on display"
+[DISPLAY]:                ./docs/title/DISPLAY.png                                               "DISPLAY Rendered on display"
+[isoArray]:               ./docs/product/isoArray.jpg                                            "Isometric view of a few panels lit with time"
+[SEG-16-RED-NOON]:        ./docs/product/SEG-16-RED-NOON.jpg                                     "Top view of a NOON"
+[SEG-16-RED-MDNT]:        ./docs/product/SEG-16-RED-MDNT.jpg                                     "Top view of a MDNT"
+[SEG-16-RED-BASE]:        ./docs/product/SEG-16-RED-BASE.jpg                                     "Top view of a BASE"
+[angledShow]:             ./docs/product/angledShow.jpg                                          "Angled shot of two panels"
+[cycleGif]:               ./docs/product/char4M.gif                                              "Animated gif of full ASCII cycle"
+[schematic]:              ./docs/assembly/schematic.png                                          "Full schematic of design"
 
 <!-- Config -->
-[config-back]:            ./docs/config/backPanel.png
-[config-pgrm]:            ./docs/config/pgrm.png
-[config-dataflow]:        ./docs/config/dataflow.png
-[config-dataflowInv]:     ./docs/config/dataflowInv.png
-[config-config]:          ./docs/config/config.png
-[config-keyed]:           ./docs/config/keyed.png
-[config-label]:           ./docs/config/label.png
+[config-back]:            ./docs/config/backPanel.png                                            "View of entire back panel"
+[config-pgrm]:            ./docs/config/pgrm.png                                                 "Detail of the program pads"
+[config-dataflow]:        ./docs/config/dataflow.png                                             "Detail of the data flow connector and jumpers"
+[config-dataflowInv]:     ./docs/config/dataflowInv.png                                          "Soldering instructions on traces to cut and bridge"
+[config-config]:          ./docs/config/config.png                                               "Detail of configuration pads"
+[config-keyed]:           ./docs/config/keyed.png                                                "Detail of keyed spring connector"
+[config-label]:           ./docs/config/label.png                                                "Example of label"
+
+<!-- Firmware -->
+[TM1640Timing]:           ./docs/firmware/TM1640Timing.png                                       "Timing diagram of T1640 Protocol"
+[dateCapFile]:            ./docs/fimware/fullDisplayCommand.sal                                  "Saleae logic analyzer file"
+[dataCapImg]:             ./docs/fimware/dataCapImg.png                                          "Image of data capture"
+[segmentMap]:             ./docs/fimware/segmentMap.png                                          "Letters to physical segment"
 
 <!-- Mounting Options -->
-[mountingDim]:            ./docs/mounting/mountingDim.png
-[2020Extrusion]:          ./docs/mounting/2020Extrusion.jpg
-[2020Installed]:          ./docs/mounting/2020Installed.jpg
-[M3x8]:                   ./docs/mounting/M3x8.jpg
-[M3x8Installed]:          ./docs/mounting/M3x8Installed.jpg
-[makerbeamParts]:         ./docs/mounting/makerbeamParts.jpg
-[makerbeamInstalled]:     ./docs/mounting/makerbeamInstalled.jpg
-[openbeamParts]:          ./docs/mounting/openbeamParts.jpg
-[openbeamInstalled]:      ./docs/mounting/openbeamInstalled.jpg
-[springPin]:              ./docs/mounting/springPin.jpg
-[springPinInstalled]:     ./docs/mounting/springPinInstalled.jpg
+[mountingDim]:            ./docs/mounting/mountingDim.png                                        "Dimensioned drawing of mounting holes and physical size"
+[plasticRivet]:           ./docs/mounting/R3075.jpg                                              "Plastic rivet with ruler"
+[rivetInstalled]:         ./docs/mounting/R3075mount.jpg                                         "Plastic rivet installed"
+[2020Extrusion]:          ./docs/mounting/2020Extrusion.jpg                                      "20mm Aluminum Extrusion"
+[2020Installed]:          ./docs/mounting/2020Installed.jpg                                      "Example of display mounted in 2020 extrusion"
+[M3x8]:                   ./docs/mounting/M3x8.jpg                                               "M3x8 screw and nut"
+[M3x8Installed]:          ./docs/mounting/M3x8Installed.jpg                                      "Module assembled with screw and nut"
+[makerbeamParts]:         ./docs/mounting/makerbeamParts.jpg                                     "Parts for mounting on makerbeam"
+[makerbeamInstalled]:     ./docs/mounting/makerbeamInstalled.jpg                                 "Example installation om makerbeam"
+[openbeamParts]:          ./docs/mounting/openbeamParts.jpg                                      "Parts for mounting on openBeam"
+[openbeamInstalled]:      ./docs/mounting/openbeamInstalled.jpg                                  "Example installtion on openBeam"
+[springPin]:              ./docs/mounting/springPin.jpg                                          "Spring pins with ruler"
+[springPinInstalled]:     ./docs/mounting/springPinInstalled.jpg                                 "Example of spring pin installation"
 
 <!-- Assembly -->
-[assembly]:               ./docs/assembly/assembly.png
-[L0]:                     ./docs/assembly/L0.png
-[L1]:                     ./docs/assembly/L1.png
-[L2]:                     ./docs/assembly/L2.png
-[L3]:                     ./docs/assembly/L3.png
-[L1-DIE]:                 ./docs/assembly/L1-DIE.png
-[L2-DIE]:                 ./docs/assembly/L2-DIE.png
-[L3-DIE]:                 ./docs/assembly/L3-DIE.png
-[imProto]:                ./docs/assembly/imProto.png
+[assembly]:               ./docs/assembly/assembly.png                                           "Assembly diagram"
+[L0]:                     ./docs/assembly/L0.png                                                 "Layer 0 layout"
+[L1]:                     ./docs/assembly/L1.png                                                 "Layer 1 layout"
+[L2]:                     ./docs/assembly/L2.png                                                 "Layer 2 layout"
+[L3]:                     ./docs/assembly/L3.png                                                 "Layer 3 layout"
+[L1-DIE]:                 ./docs/assembly/L1-DIE.png                                             "Layer 1 die cut outline"
+[L2-DIE]:                 ./docs/assembly/L2-DIE.png                                             "Layer 2 die cut outline"
+[L3-DIE]:                 ./docs/assembly/L3-DIE.png                                             "Layer 3 die cut outline"
+[imProto]:                ./docs/assembly/imProto.png                                            "Prototype injection moulding model render"
 
 <!-- Programer -->
-[minimalProgramer]:       ./docs/programer/minimalProgramer.jpg
-[productionProgramer]:    ./docs/programer/productionProgramer.png
+[minimalProgramer]:       ./docs/programer/minimalProgramer.jpg                                  "Minimal programer picture"
+[productionProgramer]:    ./docs/programer/productionProgramer.png                               "Production programer render"
 
 <!-- Components -->
-[IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg
-[IMG-TM1640]:             ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640.jpg
-[IMG-TM1640ENG]:          ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640-ENG.jpg
-[IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg
-[IMG-TAJA106K016RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJA106K016RNJ/TAJA106K016RNJ.jpg
-[IMG-TAJB107K006RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJB107K006RNJ/TAJB107K006RNJ.jpg
+[IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led componet image"
+[IMG-TM1640]:             ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640.jpg                  "Led driver componet image" 
+[IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg              "Microcontorller part image"  
+[IMG-TAJA106K016RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJA106K016RNJ/TAJA106K016RNJ.jpg  "Bulk capacitor image"
+[IMG-TAJB107K006RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJB107K006RNJ/TAJB107K006RNJ.jpg  "Bulk capacitor image"
 
 <!-- Certifications -->
 [DE000087]:               https://certification.oshwa.org/DE000087.html
