@@ -126,13 +126,13 @@ The back of the module contains pads that are used for communication and configu
 
 ![config-back]
 
-##### Programing
+##### Programming
 The four labeled pads near the top of the module are for programming. The STM8S uses a `SWIM` programming interface. The `4 mm` round pads are used to install the initial firmware and can be used for firmware updates or custom firmware if needed. The power pins are connected to the power rails, so they can also be used as power input or outputs.
 
 ![config-pgrm]
 
 ##### Dataflow
-The five pads on each side are the connections that provide the data, as well as power rails, from one board to another. For basic funcitonality, lining up the boards and soldering the top three pads (`GND`, `TX/RX`, and `+5V`) is all that is needed, although soldering all five will provide more power rails and cause no issues. 
+The five pads on each side are the connections that provide the data, as well as power rails, from one board to another. For basic funcitonality, lining up the boards and soldering the top three pads (`GND`, `TX/RX`, and `+5V`) is all that is needed, although soldering all five will provide more power rails and cause no issues.
 
 ![config-dataflow]
 
@@ -157,7 +157,7 @@ The front contains two optional upopulated spring connectors Molex [0472861001].
 The solder jumper marked `RTN_EN` enables the return channel on the last board. If a chain of displays is used and needs to be chained to the next row, this will send the signal back though one of the spring connector pins and make it available on the first display making a for a cleaner run of signal between rows.
 
 #### Mounting
-The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a very close fit with a `3.1 mm` drill and though plated for a bit more ruggedness. A `#4` screw can be used as a imperial alternetive. They are not connected to any nets, have a `5.5 mm` anular ring for screw heads, and are masked so if screws are not used, the anular ring surface matches the rest of the panel. 
+The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a very close fit with a `3.1 mm` drill and though plated for a bit more ruggedness. A `#4` screw can be used as a imperial alternetive. They are not connected to any nets, have a `5.5 mm` anular ring for screw heads, and are masked so if screws are not used, the anular ring surface matches the rest of the panel.
 
 ![mountingDim]
 
@@ -180,7 +180,7 @@ The holes and hardware provide a number of options for assembly and mounting.
 The firmware is written in C and is fully interrupt driven. It uses the [STM8 standard periphiral library][STM8SPL] (SPL) and provides multiple modes of controlling the display through commands. All code shown is simplified pseudocode.
 
 #### Modes
-By default the display boots in the `ASCII` character mode operating as a state-machine making changes based on each byte received. When enough bytes have been received for the command, the device shifts back into `ASCII` mode. 
+By default the display boots in the `ASCII` character mode operating as a state-machine making changes based on each byte received. When enough bytes have been received for the command, the device shifts back into `ASCII` mode.
 
 | Mode       | Control Byte | Bytes | Notes                       |
 | ---------- | ------------ | -----:| --------------------------- |
@@ -189,7 +189,7 @@ By default the display boots in the `ASCII` character mode operating as a state-
 | LED        | 0x12 `DC2`   |    16 | Control individual LEDs     |
 | Brightness | 0x13 `DC3`   |     1 | Set brightness              |
 
-**Only ASCII mode is verified in firmware version 0.6 other modes are in beta** 
+**Only ASCII mode is verified in firmware version 0.6 other modes are in beta**
 
 #### UART
 The UART hardware is used to receive and transmit data from a module to another. Communication is through an 8 bit NRZ with one start bit and one stop bit encoding with no pairity and the default baud rate is `115200 bps`. The voltage levels are the module power voltage, nominally `5V`.
@@ -267,7 +267,7 @@ A few requirements define the protocol.
 - A bit is read when the clock is pulsed positive
 - Data cannot change while clock is high
 - End condition is clock high followed by data high
-- 8 bits per byte, LSB First 
+- 8 bits per byte, LSB First
 
 ![TM1640Timing]
 
@@ -286,12 +286,12 @@ SEG = (REF-1) % 8
 ```
 
 ##### Segment Order
-Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the leds are mapped to the segments, the segments are mapped to the ASCII character set. [sixteenSegments.h] contains which segments need to be lit for each character, the notation used in both files refers to the segments in clockwise order going in as-is conversion with sixteen segment displays. 
+Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the leds are mapped to the segments, the segments are mapped to the ASCII character set. [sixteenSegments.h] contains which segments need to be lit for each character, the notation used in both files refers to the segments in clockwise order going in as-is conversion with sixteen segment displays.
 
 ![segmentMap]
 
 #### Configuration
-On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration. 
+On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration.
 
 ```c
   uint8_t config = 0x00;
@@ -313,7 +313,7 @@ It is setup to be compiled through [PlatformIO]. More information can be found t
 #### Flashing
 The [programming pads](#programing) on the back are used to program the module. An ST-Link V2 with the SWIM protocol is used to upload the firmware.
 
-Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings. 
+Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings.
 
 We also use a custom bash script internally that uploads, tests, and updates our database. It uses STM8Flash on Linux machines and ST Visual Programmer on WSL.
 
@@ -399,11 +399,11 @@ A test model was made with 2.5 deg draft angles and 1.2mm wall thickness for ABS
 Switch to IM at 20k-100k units.
 
 #### Custom ASIC
-Flipchip LEDs with COB fully integrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 72 MHz PLL clock. 
+Flipchip LEDs with COB fully integrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 72 MHz PLL clock.
 
 [Hey, a girl can dream. Chip die image]
 
-Engineering and silicon die cost around $50k tooling (maybe? I don't really know, but I could probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units. 
+Engineering and silicon die cost around $50k tooling (maybe? I don't really know, but I could probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units.
 
 ### Programmer
 The chip needs to be programmed with the firmware and tested for proper operation before sending out to customers. Two programmers are designed. First, a low cost simple programmer for smaller quantities and available on specical request for those who want to customize the firmware, and the other is a completely independent production-ready programmer and tester.
@@ -456,13 +456,13 @@ And `BBBB` denotes the face type
 | `IM  ` | Injection Moulded               |
 
 ## Safety
-The assembly is almost exclusively made from FR4. It is highly fire retardent and will not burn after a flame is removed. 
+The assembly is almost exclusively made from FR4. It is highly fire retardent and will not burn after a flame is removed.
 
 The edges are milled, but it is possible to have small pieces that could cause cuts, abrasions, or become embedded in the skin. If sanding or milling the board, use a respirator as fiberglass dust is carcinogenic.
 
 The boards are assembled in a lead-free process and all components are RHOS certified.
 
-The low voltage 3-5.5V as well as the currents used pose very little risk to healthy humans. 
+The low voltage 3-5.5V as well as the currents used pose very little risk to healthy humans.
 
 ## Certifications
 Certifications take time and effort but will make a better product by guaranteeing its safety to users and let them use it in other projects. The table below shows the order we will be trying to obtain certifications.
@@ -604,8 +604,8 @@ As with everything, this too is built on the gracious support of previous projec
 
 <!-- Components -->
 [IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led componet image"
-[IMG-TM1640]:             ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640.jpg                  "Led driver componet image" 
-[IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg              "Microcontorller part image"  
+[IMG-TM1640]:             ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640.jpg                  "Led driver componet image"
+[IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg              "Microcontorller part image"
 [IMG-TAJA106K016RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJA106K016RNJ/TAJA106K016RNJ.jpg  "Bulk capacitor image"
 [IMG-TAJB107K006RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJB107K006RNJ/TAJB107K006RNJ.jpg  "Bulk capacitor image"
 
