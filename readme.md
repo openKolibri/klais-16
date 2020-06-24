@@ -567,9 +567,9 @@ As with everything, this too is built on the gracious support of previous projec
 
 <!-- Firmware -->
 [TM1640Timing]:           ./docs/firmware/TM1640Timing.png                                       "Timing diagram of T1640 Protocol"
-[dateCapFile]:            ./docs/fimware/fullDisplayCommand.sal                                  "Saleae logic analyzer file"
-[dataCapImg]:             ./docs/fimware/dataCapImg.png                                          "Image of data capture"
-[segmentMap]:             ./docs/fimware/segmentMap.png                                          "Letters to physical segment"
+[dateCapFile]:            ./docs/firmware/fullDisplayCommand.sal                                  "Saleae logic analyzer file"
+[dataCapImg]:             ./docs/firmware/dataCapImg.png                                          "Image of data capture"
+[segmentMap]:             ./docs/firmware/segmentMap.png                                          "Letters to physical segment"
 
 <!-- Mounting Options -->
 [mountingDim]:            ./docs/mounting/mountingDim.png                                        "Dimensioned drawing of mounting holes and physical size"
