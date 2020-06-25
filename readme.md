@@ -163,7 +163,7 @@ The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a
 
 The holes and hardware provide a number of options for assembly and mounting.
 
-| Mounting Method           | Part Number                                      |Component          | Example               |
+| Mounting Method           | Part Number                                      | Component         | Example               |
 | ------------------------- | ------------------------------------------------ | ----------------- | --------------------- |
 | Push Rivet 3 mm x 7.5 mm  | [R3075]                                          | ![plasticRivet]   | ![rivetInstalled]     |
 | Spring pin 3 mm x 6 mm    | [97161A128]                                      | ![springPin]      | ![springPinInstalled] |
@@ -307,13 +307,13 @@ On boot, the seven GPIO for the configuration pads have their internal pullups e
 Currently the firmware uses no configuration options.
 
 #### Compiling
-It is setup to be compiled through [PlatformIO]. More information can be found through its [doucmentation][platformIODocs]. Changes may be made to the settings in the `ini` file.
+It is setup to be compiled through [PlatformIO]. More information can be found through its [documentation][platformIODocs]. Changes may be made to the settings in the `ini` file.
 
 
 #### Flashing
 The [programming pads](#programing) on the back are used to program the module. An ST-Link V2 with the SWIM protocol is used to upload the firmware.
 
-Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings. 
+Uploading using PlatformIO is currently used. Refer to [documentation][platformIODocs]. Changes may be needed to the `ini` file settings. 
 
 We also use a custom bash script internally that uploads, tests, and updates our database. It uses STM8Flash on Linux machines and ST Visual Programmer on WSL.
 
@@ -541,7 +541,7 @@ As with everything, this too is built on the gracious support of previous projec
 [platformIODocs]:         https://docs.platformio.org/en/latest/
 
 <!-- Internal Links -->
-[userGuide]:              ./docs/userGuide.md
+[userGuide]:              ./userGuide.md
 [asciiCurrent]:           ./docs/asciiCurrent.md
 [configTable]:            ./docs/configTable.md
 
@@ -568,9 +568,9 @@ As with everything, this too is built on the gracious support of previous projec
 
 <!-- Firmware -->
 [TM1640Timing]:           ./docs/firmware/TM1640Timing.png                                       "Timing diagram of T1640 Protocol"
-[dateCapFile]:            ./docs/firmware/fullDisplayCommand.sal                                  "Saleae logic analyzer file"
-[dataCapImg]:             ./docs/firmware/dataCapImg.png                                          "Image of data capture"
-[segmentMap]:             ./docs/firmware/segmentMap.png                                          "Letters to physical segment"
+[dateCapFile]:            ./docs/firmware/fullDisplayCommand.sal                                 "Saleae logic analyzer file"
+[dataCapImg]:             ./docs/firmware/dataCapImg.png                                         "Image of data capture"
+[segmentMap]:             ./docs/firmware/segmentMap.png                                         "Letters to physical segment"
 
 <!-- Mounting Options -->
 [mountingDim]:            ./docs/mounting/mountingDim.png                                        "Dimensioned drawing of mounting holes and physical size"
@@ -603,7 +603,7 @@ As with everything, this too is built on the gracious support of previous projec
 [productionProgramer]:    ./docs/programer/productionProgramer.png                               "Production programer render"
 
 <!-- Components -->
-[IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led componet image"
+[IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led component image"
 [IMG-TM1640]:             ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640.jpg                  "Led driver componet image" 
 [IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg              "Microcontorller part image"  
 [IMG-TAJA106K016RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJA106K016RNJ/TAJA106K016RNJ.jpg  "Bulk capacitor image"
