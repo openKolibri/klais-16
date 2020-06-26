@@ -541,7 +541,7 @@ As with everything, this too is built on the gracious support of previous projec
 [platformIODocs]:         https://docs.platformio.org/en/latest/
 
 <!-- Internal Links -->
-[userGuide]:              ./userGuide.md
+[userGuide]:              ./docs/userGuide.md
 [asciiCurrent]:           ./docs/asciiCurrent.md
 [configTable]:            ./docs/configTable.md
 
