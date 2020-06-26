@@ -470,8 +470,8 @@ Certifications take time and effort but will make a better product by guaranteei
 | Cetrtifing Authority     | Status                    |
 | -------------------------| ------------------------- |
 | OSHW                     | [DE000087]                |
-| CE                       | No  (Self Certificiton)   |
-| FCC                      | No  (Self Certificiton)   |
+| CE                       | No  (Self Certification)  |
+| FCC                      | No  (Self Certification)  |
 | UL Registered Component  | No  (yearly fee)          |
 | WEEE                     | No  (yearly fee)          |
 
