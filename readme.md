@@ -554,7 +554,7 @@ As with everything, this too is built on the gracious support of previous projec
 [SEG-16-RED-MDNT]:        ./docs/product/SEG-16-RED-MDNT.jpg                                     "Top view of a MDNT"
 [SEG-16-RED-BASE]:        ./docs/product/SEG-16-RED-BASE.jpg                                     "Top view of a BASE"
 [angledShow]:             ./docs/product/angledShow.jpg                                          "Angled shot of two panels"
-[cycleGif]:               ./docs/product/char4M.gif                                              "Animated gif of full ASCII cycle"
+[cycleGif]:               ./docs/product/char8M.gif                                              "Animated gif of full ASCII cycle"
 [schematic]:              ./docs/assembly/schematic.png                                          "Full schematic of design"
 
 <!-- Config -->
