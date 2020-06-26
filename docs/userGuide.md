@@ -1,21 +1,24 @@
 # Sixteen Segment Display User Guide
-This User guide goes over basic useage instrucitons. With examples for a veirty of systems.
+This User guide goes over basic usage instructions. With examples for control with a few systems and languages.
+
 
 
 All components a RHOS certified and assembly is done in a leadfree process.
 
 ## Contents
-One labelled, flashed, and tested display module in its default conifguration. Assembled with 3 mm x 6.5 mm plastic push rivets (or M3x8 SS machine screws and nuts for first batch). 
+In the package you will recieve a labelled, programed, and tested display module in its default conifguration. Assembled with 3 mm x 7.5 mm plastic push rivets. 
 
 ## Required Tools
-Soldering Iron (Using my portable TS100 Iron)
-Flux core solder (Kester leaded solder is my favorite)
 
-If mounting on 15mm extrusion
-M2.5 Allen key (I like Boondus balldrivers)
+### Soldering Iron
+You will need to some really minimal soldering that is very forgiving. I am currenty using my portable TS100 soldering iron set at 350C. Along with the soldering iron you will need solder, I prefer rosin core leaded solder (Kester 60/40) which is easier to work with, but lead free should be completely serviceable (you might need to bump up the temperature to 400C for lead free).
+
+### Mounting Method
+If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use 2.5mm Boondus balldriver for M3 socket cap screws). Alternetively if mounting to wood with #4 screws you will need a drill/driver and as well as possibly a spade bit to make clearence for the joints. 
+
+[toolsAndParts]
 
 ## Assemlbing a Array
-
 
 [screwing togeether gif]
 
@@ -55,7 +58,7 @@ mode COM** BAUD=115200 PARITY=n DATA=8
 set /p x="olleh" <nul >\\.\COM**
 ```
 
-#### Bash
+#### ✓ Bash
 Run the following commands (directly or in a `.sh` file). Outputs on /dev/sttyS***
 ```bash
 stty -F /dev/ttyS*** 115200 cs8 -cstopb -parenb 
@@ -63,12 +66,11 @@ echo -ne "Hello" | rev > /dev/sttyS***
 ```
 
 #### Node.js
-
 Install the `serialport` dependency.
 ```bash
 npm install --save serialport
 ```
-The ndirectly in the interperter or in the `main.js` file.
+Then directly in the interperter or in the `main.js` file.
 ```node
 const SerialPort = require("serialport");
 const port = new SerialPort(/dev/ttyS0, { baudRate: 115200 });
@@ -80,7 +82,7 @@ If in the `main.js` file, run it from the command line.
 node ./main.js
 ```
 
-#### Arduino
+#### ✓ Arduino
 Minimal program for arduino.
 ```arduino
 void setup(){
@@ -114,9 +116,17 @@ print("Hello"[::-1])
 
 #### Fortran
 ```fortran
+    USE IFPORT
+    SPORT_WRITE_DATA( 2, 'olleH', 5 )
+    END
 ```
 
 #### STM8S SPL
 ```c
 
 ```
+
+
+
+<!-- Images -->
+[toolsAndParts]:             ./docs/userGuide/toolsAndParts.jpg

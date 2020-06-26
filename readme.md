@@ -163,7 +163,7 @@ The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a
 
 The holes and hardware provide a number of options for assembly and mounting.
 
-| Mounting Method           | Part Number                                      |Component          | Example               |
+| Mounting Method           | Part Number                                      | Component         | Example               |
 | ------------------------- | ------------------------------------------------ | ----------------- | --------------------- |
 | Push Rivet 3 mm x 7.5 mm  | [R3075]                                          | ![plasticRivet]   | ![rivetInstalled]     |
 | Spring pin 3 mm x 6 mm    | [97161A128]                                      | ![springPin]      | ![springPinInstalled] |
@@ -541,7 +541,7 @@ As with everything, this too is built on the gracious support of previous projec
 [platformIODocs]:         https://docs.platformio.org/en/latest/
 
 <!-- Internal Links -->
-[userGuide]:              ./docs/userGuide.md
+[userGuide]:              ./userGuide.md
 [asciiCurrent]:           ./docs/asciiCurrent.md
 [configTable]:            ./docs/configTable.md
 
@@ -554,7 +554,7 @@ As with everything, this too is built on the gracious support of previous projec
 [SEG-16-RED-MDNT]:        ./docs/product/SEG-16-RED-MDNT.jpg                                     "Top view of a MDNT"
 [SEG-16-RED-BASE]:        ./docs/product/SEG-16-RED-BASE.jpg                                     "Top view of a BASE"
 [angledShow]:             ./docs/product/angledShow.jpg                                          "Angled shot of two panels"
-[cycleGif]:               ./docs/product/char4M.gif                                              "Animated gif of full ASCII cycle"
+[cycleGif]:               ./docs/char/char8M.gif                                              "Animated gif of full ASCII cycle"
 [schematic]:              ./docs/assembly/schematic.png                                          "Full schematic of design"
 
 <!-- Config -->
@@ -568,9 +568,9 @@ As with everything, this too is built on the gracious support of previous projec
 
 <!-- Firmware -->
 [TM1640Timing]:           ./docs/firmware/TM1640Timing.png                                       "Timing diagram of T1640 Protocol"
-[dateCapFile]:            ./docs/firmware/fullDisplayCommand.sal                                  "Saleae logic analyzer file"
-[dataCapImg]:             ./docs/firmware/dataCapImg.png                                          "Image of data capture"
-[segmentMap]:             ./docs/firmware/segmentMap.png                                          "Letters to physical segment"
+[dateCapFile]:            ./docs/firmware/fullDisplayCommand.sal                                 "Saleae logic analyzer file"
+[dataCapImg]:             ./docs/firmware/dataCapImg.png                                         "Image of data capture"
+[segmentMap]:             ./docs/firmware/segmentMap.png                                         "Letters to physical segment"
 
 <!-- Mounting Options -->
 [mountingDim]:            ./docs/mounting/mountingDim.png                                        "Dimensioned drawing of mounting holes and physical size"
