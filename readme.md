@@ -3,7 +3,7 @@
 ![DISPLAY]
 
 # Sixteen Segment Display
-The look of classic signage, be it neon tubes, wrought iron, or the use of distinctive typography and negative space, has a particular appeal. Unfortunately, the art form is dwindling due to the flexibiltiy and flash that comes with newer LED arrays. Their distinctive styles have been giving way for the monotony of RGB LED panels.
+The look of classic signage, be it neon tubes, wrought iron, or the use of distinctive typography and negative space, has a particular appeal. Unfortunately, the art form is dwindling due to the flexibility and flash that comes with newer LED arrays. Their distinctive styles have been giving way for the monotony of RGB LED panels.
 
 ![cycleGif]
 
@@ -21,7 +21,7 @@ What follows below is highly detailed technical documentation. The [user guide][
       * [Microcontroller](#microcontroller)
       * [Power supply](#power-supply)
       * [Connections](#connections)
-        * [Programing](#programing)
+        * [Programming](#programming)
         * [Dataflow](#dataflow)
         * [Config Pads](#config-pads)
         * [Key Connector](#key-connector)
@@ -51,7 +51,7 @@ What follows below is highly detailed technical documentation. The [user guide][
       * [Die Cut](#die-cut)
       * [Injection Moulding](#injection-moulding)
       * [Custom ASIC](#custom-asic)
-    * [Programer](#programer)
+    * [Programmer](#programmer)
       * [Minimal](#minimal)
       * [Production](#production)
     * [Artwork](#artwork)
@@ -69,21 +69,21 @@ What follows below is highly detailed technical documentation. The [user guide][
 
 
 ## Design
-The display is a recreation of sixteen segment alphanumeric displays in a format that is physically larger and thinner than anything available on the viewing front. The modular segments can be combined to make a display of any length. It is designed to be easy to use and accessible. The physical design is based on stacking layers to provide clearance, a diffusion layer, and encapsulation for the electronics. The minimalist design and 3:2 aspect ratio were chosen to make intergration very clean. There are no gaps between characters and when placed side-by-side, there is a flat near-seamless surface.
+The display is a recreation of sixteen segment alphanumeric displays in a format that is physically larger and thinner than anything available on the viewing front. The modular segments can be combined to make a display of any length. It is designed to be easy to use and accessible. The physical design is based on stacking layers to provide clearance, a diffusion layer, and encapsulation for the electronics. The minimalist design and 3:2 aspect ratio were chosen to make integration very clean. There are no gaps between characters and when placed side-by-side, there is a flat near-seamless surface.
 
 | NOON               | MDNT               | BASE               |
 | ------------------ | ------------------ | ------------------ |
 | ![SEG-16-RED-NOON] | ![SEG-16-RED-MDNT] | ![SEG-16-RED-BASE] |
 
 ### Hardware
-The planels are designed for efficent high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 63.97 g with 6 plastic rivets.
+The panels are designed for efficient high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 63.97 g with 6 plastic rivets.
 
 ![schematic]
 
-A [schematic.pdf] is also avalible.
+A [schematic.pdf] is also available.
 
 #### LEDs
-The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (60x30 mil, or 1.5x0.8 mm) package is used for their wide accessability, providing a breadth of alternatives in color, lens projection angle, and brightness for possible subsitutions. The datsheets for the LEDs used for each model is provided in the table below.
+The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (60x30 mil, or 1.5x0.8 mm) package is used for their wide accessibility, providing a breadth of alternatives in color, lens projection angle, and brightness for possible substitutions. The datasheets for the LEDs used for each model is provided in the table below.
 
 | Model             | MPN        | Detail          | Current Draw         |
 | ----------------- | ---------- | --------------- | -------------------- |
@@ -103,12 +103,12 @@ This chip is made specifically for the Chinese market and may be hard to source 
 | Wuxi I-CORE Electronics | AiP1640  |
 
 #### Microcontroller
-STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sensitive applications, but provides a reasonable host of features. It has a wide votlage range of `2.95V` to `5.5V`, internal 16Mhz clock, UART that can be clocked at up to 1Mbps, plenty of timers, and 28 I/O. As well as other features that are not being used like a 10b ADC, SPI/I2C hardware, and low power modes.
+STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sensitive applications, but provides a reasonable host of features. It has a wide voltage range of `2.95V` to `5.5V`, internal 16Mhz clock, UART that can be clocked at up to 1Mbps, plenty of timers, and 28 I/O. As well as other features that are not being used like a 10b ADC, SPI/I2C hardware, and low power modes.
 
 ![IMG-STM8S003]
 
 #### Power supply
-The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the intergrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with mesurement methodology.
+The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the integrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with measurement methodology.
 
 Maximum power draw is 1.6W at max brightness and all segments lit. Temperature rise above ambient after two hours is 15.9°C (61°F).
 
@@ -126,13 +126,13 @@ The back of the module contains pads that are used for communication and configu
 
 ![config-back]
 
-##### Programing
+##### Programming
 The four labeled pads near the top of the module are for programming. The STM8S uses a `SWIM` programming interface. The `4 mm` round pads are used to install the initial firmware and can be used for firmware updates or custom firmware if needed. The power pins are connected to the power rails, so they can also be used as power input or outputs.
 
 ![config-pgrm]
 
 ##### Dataflow
-The five pads on each side are the connections that provide the data, as well as power rails, from one board to another. For basic funcitonality, lining up the boards and soldering the top three pads (`GND`, `TX/RX`, and `+5V`) is all that is needed, although soldering all five will provide more power rails and cause no issues. 
+The five pads on each side are the connections that provide the data, as well as power rails, from one board to another. For basic functionality, lining up the boards and soldering the top three pads (`GND`, `TX/RX`, and `+5V`) is all that is needed, although soldering all five will provide more power rails and cause no issues.
 
 ![config-dataflow]
 
@@ -142,7 +142,7 @@ If needed, the inverted configuration also provides the option of having two dec
 
 ![config-dataflowInv]
 
-The moves the `RX` and `TX` lines ot the correct sides to be placed inline with normally orineted modules.
+The moves the `RX` and `TX` lines to the correct sides to be placed inline with normally oriented modules.
 
 ##### Config Pads
 The back has seven configuration pads that provide different settings and are checked on boot. By default, they are all unbridged. The configuration pads are to be selected with solder jumpers.
@@ -150,14 +150,14 @@ The back has seven configuration pads that provide different settings and are ch
 ![config-config]
 
 ##### Key Connector
-The front contains two optional upopulated spring connectors Molex [0472861001]. These provide functionality if the thickness of the panel or reconfigurability is the main concern. By removing any solder joints on the back, and transmitting the data and power through the keyed connector. The thickness is limited to `5.8 mm`. The small PCB keys also allow assembly and construction of quick and easily reconfigurable arrays. The connectors are not always used, so they are not installed by default since they add cost and are not expected to be used by most.
+The front contains two optional unpopulated spring connectors Molex [0472861001]. These provide functionality if the thickness of the panel or reconfigurability is the main concern. By removing any solder joints on the back, and transmitting the data and power through the keyed connector. The thickness is limited to `5.8 mm`. The small PCB keys also allow assembly and construction of quick and easily reconfigurable arrays. The connectors are not always used, so they are not installed by default since they add cost and are not expected to be used by most.
 
 ![config-keyed]
 
 The solder jumper marked `RTN_EN` enables the return channel on the last board. If a chain of displays is used and needs to be chained to the next row, this will send the signal back though one of the spring connector pins and make it available on the first display making a for a cleaner run of signal between rows.
 
 #### Mounting
-The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a very close fit with a `3.1 mm` drill and though plated for a bit more ruggedness. A `#4` screw can be used as a imperial alternetive. They are not connected to any nets, have a `5.5 mm` anular ring for screw heads, and are masked so if screws are not used, the anular ring surface matches the rest of the panel. 
+The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a very close fit with a `3.1 mm` drill and though plated for a bit more ruggedness. A `#4` screw can be used as a imperial alternative. They are not connected to any nets, have a `5.5 mm` annular ring for screw heads, and are masked so if screws are not used, the annular ring surface matches the rest of the panel.
 
 ![mountingDim]
 
@@ -180,7 +180,7 @@ The holes and hardware provide a number of options for assembly and mounting.
 The firmware is written in C and is fully interrupt driven. It uses the [STM8 standard periphiral library][STM8SPL] (SPL) and provides multiple modes of controlling the display through commands. All code shown is simplified pseudocode.
 
 #### Modes
-By default the display boots in the `ASCII` character mode operating as a state-machine making changes based on each byte received. When enough bytes have been received for the command, the device shifts back into `ASCII` mode. 
+By default the display boots in the `ASCII` character mode operating as a state-machine making changes based on each byte received. When enough bytes have been received for the command, the device shifts back into `ASCII` mode.
 
 | Mode       | Control Byte | Bytes | Notes                       |
 | ---------- | ------------ | -----:| --------------------------- |
@@ -189,15 +189,15 @@ By default the display boots in the `ASCII` character mode operating as a state-
 | LED        | 0x12 `DC2`   |    16 | Control individual LEDs     |
 | Brightness | 0x13 `DC3`   |     1 | Set brightness              |
 
-**Only ASCII mode is verified in firmware version 0.6 other modes are in beta** 
+**Only ASCII mode is verified in firmware version 0.6 other modes are in beta**
 
 #### UART
-The UART hardware is used to receive and transmit data from a module to another. Communication is through an 8 bit NRZ with one start bit and one stop bit encoding with no pairity and the default baud rate is `115200 bps`. The voltage levels are the module power voltage, nominally `5V`.
+The UART hardware is used to receive and transmit data from a module to another. Communication is through an 8 bit NRZ with one start bit and one stop bit encoding with no parity and the default baud rate is `115200 bps`. The voltage levels are the module power voltage, nominally `5V`.
 
-The UART is initialized on boot and the recieve interrupt is enabled. When a new character has been read in the receive buffer, the interrupt fires.
+The UART is initialized on boot and the receive interrupt is enabled. When a new character has been read in the receive buffer, the interrupt fires.
 
 ##### RX
-Based on the recieve mode the new data is loaded into the recieve buffer. A number of consecutive bytes read is dependent on the mode that is set. A mode byte received after mode has been reset will change the mode as well. The transmit interrupt is fired when a new byte is received and the buffer is full, depending on the current receive mode.
+Based on the receive mode the new data is loaded into the receive buffer. A number of consecutive bytes read is dependent on the mode that is set. A mode byte received after mode has been reset will change the mode as well. The transmit interrupt is fired when a new byte is received and the buffer is full, depending on the current receive mode.
 
 ##### TX
 The first byte is sent by the interrupt trigger. Depending on the transmit mode, the interrupts continue to fire, stepping down through the buffer until it is empty, outputting the data in the same order as it was received.
@@ -229,7 +229,7 @@ UART_RX_INTERRUPT() {
 }
 ```
 
-Everytime a new character is received in the RX buffer, a timeout is started of 1 ms (*to be replaced with 2.5 byte time based on baud rate*). If a new character comes before the timeout is reached, it is reset again. When the timeout is reached, the overflow interrupt is triggered. In the interrupt, the further interrupts are disabled and then the display is drawn based on the TX mode.
+Every time a new character is received in the RX buffer, a timeout is started of 1 ms (*to be replaced with 2.5 byte time based on baud rate*). If a new character comes before the timeout is reached, it is reset again. When the timeout is reached, the overflow interrupt is triggered. In the interrupt, the further interrupts are disabled and then the display is drawn based on the TX mode.
 
 ```c
 TIMER_INTERRUPT(){
@@ -256,7 +256,7 @@ The display driver is a minimal custom library. The display driver is controlled
 The chip has only a few registers, most of which make up the current LED states. They are all described in the header file and fall into three sections.
 
 - Data Commands
-- Grid Memeory
+- Grid Memory
 - Display Brightness
 
 ##### Protocol
@@ -267,7 +267,7 @@ A few requirements define the protocol.
 - A bit is read when the clock is pulsed positive
 - Data cannot change while clock is high
 - End condition is clock high followed by data high
-- 8 bits per byte, LSB First 
+- 8 bits per byte, LSB First
 
 ![TM1640Timing]
 
@@ -286,12 +286,12 @@ SEG = (REF-1) % 8
 ```
 
 ##### Segment Order
-Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the leds are mapped to the segments, the segments are mapped to the ASCII character set. [sixteenSegments.h] contains which segments need to be lit for each character, the notation used in both files refers to the segments in clockwise order going in as-is conversion with sixteen segment displays. 
+Besides direct control over the LEDs, there are also helper functions such as segment control and print letter. These use the [segmentMapping.h] and [sixteenSegments.h] headers. Once the LEDs are mapped to the segments, the segments are mapped to the ASCII character set. [sixteenSegments.h] contains which segments need to be lit for each character, the notation used in both files refers to the segments in clockwise order going in as-is conversion with sixteen segment displays.
 
 ![segmentMap]
 
 #### Configuration
-On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration. 
+On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration.
 
 ```c
   uint8_t config = 0x00;
@@ -311,9 +311,9 @@ It is setup to be compiled through [PlatformIO]. More information can be found t
 
 
 #### Flashing
-The [programming pads](#programing) on the back are used to program the module. An ST-Link V2 with the SWIM protocol is used to upload the firmware.
+The [programming pads](#programming) on the back are used to program the module. An ST-Link V2 with the SWIM protocol is used to upload the firmware.
 
-Uploading using PlatformIO is currently used. Refer to [documentation][platformIODocs]. Changes may be needed to the `ini` file settings. 
+Uploading using PlatformIO is currently used. Refer to [documentaiton][platformIODocs]. Changes may be needed to the `ini` file settings.
 
 We also use a custom bash script internally that uploads, tests, and updates our database. It uses STM8Flash on Linux machines and ST Visual Programmer on WSL.
 
@@ -332,10 +332,10 @@ Works fine down to 3.3V.
 | Min Temp     |   -20 | C    |           |
 
 ## Manufacturing
-Designing for maufacturing was a large portion of this project. This was done through many approaches on a number of fronts.
+Designing for manufacturing was a large portion of this project. This was done through many approaches on a number of fronts.
 
 ### BOM
-The BOM was selected with parts that are common to the Chinese high-volume manufacturing market, have strong supply chains, as well as many alternatives in case a supplier stops manufacture. The number of unique parts was kept to a minimum and the maximum ammount of features can be implemented with "free" options, like SMD pads. The table of BOM is shown below.
+The BOM was selected with parts that are common to the Chinese high-volume manufacturing market, have strong supply chains, as well as many alternatives in case a supplier stops manufacture. The number of unique parts was kept to a minimum and the maximum amount of features can be implemented with "free" options, like SMD pads. The table of BOM is shown below.
 
 | REF       | QTY | Manufacturer               | MPN              | Description                                 |
 | --------- | ---:| -------------------------- | ---------------- | ------------------------------------------- |
@@ -390,7 +390,7 @@ The die cut panels replace the top three panels with 1/16" plastic that is die c
 Switch to die cut at 1k-10k units.
 
 #### Injection Moulding
-Injection moulded panel will replace the front three panels with a single injection moulded plastic part, as well as the screws. Providing the option to either punch through from the front to get the same M3 holes, or screw in from the back to have a completely clean front panel. The IM part also provides other benefits, such as, a more consistent texture on the whole panel, and a high contrast front that has no discernable pattern when off.
+Injection moulded panel will replace the front three panels with a single injection moulded plastic part, as well as the screws. Providing the option to either punch through from the front to get the same M3 holes, or screw in from the back to have a completely clean front panel. The IM part also provides other benefits, such as, a more consistent texture on the whole panel, and a high contrast front that has no discernible pattern when off.
 
 ![imProto]
 
@@ -399,24 +399,24 @@ A test model was made with 2.5 deg draft angles and 1.2mm wall thickness for ABS
 Switch to IM at 20k-100k units.
 
 #### Custom ASIC
-Flipchip LEDs with COB fully integrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 72 MHz PLL clock. 
+Flipchip LEDs with COB fully integrated controller. HDL gateware design to begin at 50k units. RISC-V processor with 16x16 multiplexing LED array at a 72 MHz PLL clock.
 
 [Hey, a girl can dream. Chip die image]
 
-Engineering and silicon die cost around $50k tooling (maybe? I don't really know, but I could probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units. 
+Engineering and silicon die cost around $50k tooling (maybe? I don't really know, but I could probably synthesize a sea of gates design that works) Switch to custom ASIC at 100k units.
 
-### Programer
-The chip needs to be programmed with the firmware and tested for proper operation before sending out to customers. Two programmers are designed. First, a low cost simple programmer for smaller quantities and available on specical request for those who want to customize the firmware, and the other is a completely independent production-ready programmer and tester.
+### Programmer
+The chip needs to be programmed with the firmware and tested for proper operation before sending out to customers. Two programmers are designed. First, a low cost simple programmer for smaller quantities and available on special request for those who want to customize the firmware, and the other is a completely independent production-ready programmer and tester.
 
 #### Minimal
 Them minimal program has holes for alignment corresponding to the top row, and four spring pins. These connect out to the programming header which can then be corrected to an ST-Link V2. The alignment holes have M3x8 screws and nuts which were added to create alignment pins. The board to be programmed is aligned with the pin and held down while programming.
 
-![minimalProgramer]
+![minimalProgrammer]
 
 #### Production
 The production programmer is a program and test jig. The boards are slipped under the bottom overhang and pushed down until the lever snaps and holds them in place. Then a full test suite can be run, checking the input and output, programming with multiple firmwares and reading back system outputs to verify that the device works properly.
 
-![productionProgramer]
+![productionProgrammer]
 
 ### Artwork
 The artwork on the back is a trademark and protected by copyright. This can not be duplicated on derivative works. It consists of the Kolibri bird, copyright and designer notices, certifications, a location for labeling, as well as the URL and QR code to documentation.
@@ -456,13 +456,13 @@ And `BBBB` denotes the face type
 | `IM  ` | Injection Moulded               |
 
 ## Safety
-The assembly is almost exclusively made from FR4. It is highly fire retardent and will not burn after a flame is removed. 
+The assembly is almost exclusively made from FR4. It is highly fire retardant and will not burn after a flame is removed.
 
 The edges are milled, but it is possible to have small pieces that could cause cuts, abrasions, or become embedded in the skin. If sanding or milling the board, use a respirator as fiberglass dust is carcinogenic.
 
 The boards are assembled in a lead-free process and all components are RHOS certified.
 
-The low voltage 3-5.5V as well as the currents used pose very little risk to healthy humans. 
+The low voltage 3-5.5V as well as the currents used pose very little risk to healthy humans.
 
 ## Certifications
 Certifications take time and effort but will make a better product by guaranteeing its safety to users and let them use it in other projects. The table below shows the order we will be trying to obtain certifications.
@@ -476,7 +476,7 @@ Certifications take time and effort but will make a better product by guaranteei
 | WEEE                     | No  (yearly fee)          |
 
 ## Licence
-The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Everything is released under permissive coplyleft licenses, and copies of all licenses are included.
+The product was designed by Sawaiz Syed for Kolibri who owns the copyright. Everything is released under permissive copyleft licenses, and copies of all licenses are included.
 
 | Sector        | License      | Verison |
 | ------------- | ------------ | -------:|
@@ -502,9 +502,9 @@ As with everything, this too is built on the gracious support of previous projec
 
 ### Libraries
 - [Sixteen Segment ASCII](https://github.com/dmadison/LED-Segment-ASCII) - MIT - Copyright (c) 2017 David Madison
-- STM8 SPL (Availible component, but not included)
+- STM8 SPL (Available component, but not included)
 
-## Reccomended Reading
+## Recommended Reading
 
 
 ## Todo
@@ -598,14 +598,14 @@ As with everything, this too is built on the gracious support of previous projec
 [L3-DIE]:                 ./docs/assembly/L3-DIE.png                                             "Layer 3 die cut outline"
 [imProto]:                ./docs/assembly/imProto.png                                            "Prototype injection moulding model render"
 
-<!-- Programer -->
-[minimalProgramer]:       ./docs/programer/minimalProgramer.jpg                                  "Minimal programer picture"
-[productionProgramer]:    ./docs/programer/productionProgramer.png                               "Production programer render"
+<!-- Programmer -->
+[minimalProgrammer]:       ./docs/programmer/minimalProgrammer.jpg                                  "Minimal programmer picture"
+[productionProgrammer]:    ./docs/programmer/productionProgrammer.png                               "Production programmer render"
 
 <!-- Components -->
-[IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led component image"
-[IMG-TM1640]:             ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640.jpg                  "Led driver componet image" 
-[IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg              "Microcontorller part image"  
+[IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led componet image"
+[IMG-TM1640]:             ./pcb/SEG-16-XXX-XXXX-L0/components/TM1640/TM1640.jpg                  "Led driver componet image"
+[IMG-STM8S003]:           ./pcb/SEG-16-XXX-XXXX-L0/components/STM8S003/STM8S003.jpg              "Microcontorller part image"
 [IMG-TAJA106K016RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJA106K016RNJ/TAJA106K016RNJ.jpg  "Bulk capacitor image"
 [IMG-TAJB107K006RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJB107K006RNJ/TAJB107K006RNJ.jpg  "Bulk capacitor image"
 
