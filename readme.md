@@ -502,9 +502,9 @@ As with everything, this too is built on the gracious support of previous projec
 
 ### Libraries
 - [Sixteen Segment ASCII](https://github.com/dmadison/LED-Segment-ASCII) - MIT - Copyright (c) 2017 David Madison
-- STM8 SPL (Availible component, but not included)
+- STM8 SPL (Available component, but not included)
 
-## Reccomended Reading
+## Recommended Reading
 
 
 ## Todo
