@@ -76,14 +76,14 @@ The display is a recreation of sixteen segment alphanumeric displays in a format
 | ![SEG-16-RED-NOON] | ![SEG-16-RED-MDNT] | ![SEG-16-RED-BASE] |
 
 ### Hardware
-The panels are designed for efficient high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is 100 mm x 66.66 mm, providing a 3:2 aspect ratio and are nominally 5.8 mm thick. Each panel weighs 63.97 g with 6 plastic rivets.
+The panels are designed for efficient high yield manufacturing in both small and large quantities, with three possible stages, based on tooling investment. The physical size of each panel is `100 mm` x `66.66 mm`, providing a 3:2 aspect ratio and are nominally `5.8 mm` thick. Each panel weighs `63.97 g` with 6 plastic rivets.
 
 ![schematic]
 
 A [schematic.pdf] is also available.
 
 #### LEDs
-The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (60x30 mil, or 1.5x0.8 mm) package is used for their wide accessibility, providing a breadth of alternatives in color, lens projection angle, and brightness for possible substitutions. The datasheets for the LEDs used for each model is provided in the table below.
+The assembly uses 128 0603 surface mount LEDs. They are spaced evenly through all the segments, as well as eight of them acting as points in the underline. The 0603 (`60 mil` x `30 mil`, or `1.5 mm` x `0.8 mm`) package is used for their wide accessibility, providing a breadth of alternatives in color, lens projection angle, and brightness for possible substitutions. The datasheets for the LEDs used for each model is provided in the table below.
 
 | Model             | MPN        | Detail          | Current Draw         |
 | ----------------- | ---------- | --------------- | -------------------- |
@@ -116,10 +116,10 @@ Maximum power draw is 1.6W at max brightness and all segments lit. Temperature r
 | -------- | --------------------------:| -------------------------:|
 | Off      |                        5.2 |                       5.2 |
 | All      |                      319.0 |                      28.6 |
-| `@`      |                            |                           |
-| `.`      |                            |                           |
-| `K`      |                            |                           |
-| `[`      |                            |                           |
+| `@`      |                      197.0 |                           |
+| `.`      |                       17.1 |                           |
+| `K`      |                      125.7 |                           |
+| `[`      |                      106.0 |                           |
 
 #### Connections
 The back of the module contains pads that are used for communication and configuration, providing many options to the end-user.
@@ -163,18 +163,18 @@ The mounting holes are placed `3 mm` from all edges and are for `M3` screws in a
 
 The holes and hardware provide a number of options for assembly and mounting.
 
-| Mounting Method           | Part Number                                      | Component         | Example               |
-| ------------------------- | ------------------------------------------------ | ----------------- | --------------------- |
-| Push Rivet 3 mm x 7.5 mm  | [R3075]                                          | ![plasticRivet]   | ![rivetInstalled]     |
-| Spring pin 3 mm x 6 mm    | [97161A128]                                      | ![springPin]      | ![springPinInstalled] |
-| M3x8x0.5 and Nut          | [91292A112] [91828A211]                          | ![M3x8]           | ![M3x8Installed]      |
-| 15 mm Extrusion M3x10     | [Misumi HFS3], [OpenBeam], [Makerbeam XL]        | ![openbeamParts]  | ![openbeamInstalled]  |
-| 10 mm Extruison M3x8      | [MakerBeam], [MicroRAX]                          | ![makerbeamParts] | ![makerbeamInstalled] |
-| 20 mm Extrusion Slot      | [Misumi HFS5], [Metric 8020]                     | ![2020Extrusion]  | ![2020Installed]      |
-| Soldered brass nut        | [90690A037]                                      |                   |                       |
-| Zip Ties 3 mm             |                                                  |                   |                       |
-| #4 screw, machine or wood |                                                  |                   |                       |
-| Pop rivets, M3 or #4      |                                                  |                   |                       |
+| Mounting Method              | Part Number                                      | Component         | Example               |
+| ---------------------------- | ------------------------------------------------ | ----------------- | --------------------- |
+| Push Rivet `3 mm` x `7.5 mm` | [R3075]                                          | ![plasticRivet]   | ![rivetInstalled]     |
+| Spring pin `3 mm` x `6 mm`   | [97161A128]                                      | ![springPin]      | ![springPinInstalled] |
+| `M3x8x0.5` and Nut           | [91292A112] [91828A211]                          | ![M3x8]           | ![M3x8Installed]      |
+| `15 mm` Extrusion M3x10      | [Misumi HFS3], [OpenBeam], [Makerbeam XL]        | ![openbeamParts]  | ![openbeamInstalled]  |
+| `10 mm` Extruison M3x8       | [MakerBeam], [MicroRAX]                          | ![makerbeamParts] | ![makerbeamInstalled] |
+| `20 mm` Extrusion Slot       | [Misumi HFS5], [Metric 8020]                     | ![2020Extrusion]  | ![2020Installed]      |
+| Soldered brass nut           | [90690A037]                                      |                   |                       |
+| Zip Ties `3 mm`              |                                                  |                   |                       |
+| #4 screw, machine or wood    |                                                  |                   |                       |
+| Pop rivets, M3 or #4         |                                                  |                   |                       |
 
 ### Firmware
 The firmware is written in C and is fully interrupt driven. It uses the [STM8 standard periphiral library][STM8SPL] (SPL) and provides multiple modes of controlling the display through commands. All code shown is simplified pseudocode.
@@ -351,12 +351,12 @@ The BOM was selected with parts that are common to the Chinese high-volume manuf
 The [Octopart] BOM is also available, although not much use since the parts are not carried by US distributors.
 
 ### PCB-Assembly
-The PCB assembly is single-sided surface mount components only. The smallest components are 0402. All can be PNP from tapes or tubes, and reflowed at once. There are three fiducials as well as three tooling holes on each board. The tooling holes are 1.152 mm and the fiducials are 1.5 mm x 3 mm. There are 139 components all of which are SMD, yielding a total of 322 solder joints.
+The PCB assembly is single-sided surface mount components only. The smallest components are 0402. All can be PNP from tapes or tubes, and reflowed at once. There are three fiducials as well as three tooling holes on each board. The tooling holes are `1.152 mm` and the fiducials are `1.5 mm` x `3 mm`. There are 139 components all of which are SMD, yielding a total of 322 solder joints.
 
 ![assembly]
 
 ### Physical Assembly
-The panels are combined in order and can be held together with 3 mm x 7.5 mm nylon 6/6 push rivets. This makes ingress into inventory much faster, and gives the customer another option to use for mounting since it's an uncommon part.
+The panels are combined in order and can be held together with `3 mm` x` 7.5 mm` nylon 6/6 push rivets. This makes ingress into inventory much faster, and gives the customer another option to use for mounting since it's an uncommon part.
 
 ### Production Scaling
 The physical assembly varies in the volume of production. Further sections will be updated with information if we ever reach those volumes.
@@ -364,12 +364,12 @@ The physical assembly varies in the volume of production. Further sections will 
 #### PCB Stack
 First iteration is the PCB stack as that has no tooling cost and all can be order from the same manufacturer. There are four PCBs in the stack that make-up the display.
 
-| Board | Height (mm) | Width (mm) | Layers | Copper Thickness | Thickness (mm) | Material | Min Drill | Trace Sizing | Mask  | Silk   | E-Test |
-| ----- | -----------:| ----------:| ------:| ----------------:| --------------:| -------- | ---------:| ------------:| ----- | ------ | ------ |
-| L0    |      100.00 |      66.66 |      2 |           1.0 oz |            1.0 | FR4      |    0.3 mm |          6/6 | Green |  White | Yes    |
-| L1    |      100.00 |      66.66 |      2 |           1.0 oz |            1.6 | FR4      |       N/A |          N/A | Black |  White | No     |
-| L2    |      100.00 |      66.66 |      2 |           1.0 oz |            1.6 | FR4      |       N/A |          N/A | Black |  White | No     |
-| L3    |      100.00 |      66.66 |      2 |           1.0 oz |            1.6 | FR4      |       N/A |          N/A | Black |  White | No     |
+| Board | Height (mm) | Width (mm) | Layers | Copper  | Thickness (mm) | Material | Min Drill (mm) | Trace Sizing | Mask  | Silk   | E-Test |
+| ----- | -----------:| ----------:| ------:| -------:| --------------:| -------- | --------------:| ------------:| ----- | ------ | ------ |
+| L0    |      100.00 |      66.66 |      2 |  1.0 oz |            1.0 | FR4      |            0.3 |          6/6 | Green |  White | Yes    |
+| L1    |      100.00 |      66.66 |      2 |  1.0 oz |            1.6 | FR4      |            N/A |          N/A | Black |  White | No     |
+| L2    |      100.00 |      66.66 |      2 |  1.0 oz |            1.6 | FR4      |            N/A |          N/A | Black |  White | No     |
+| L3    |      100.00 |      66.66 |      2 |  1.0 oz |            1.6 | FR4      |            N/A |          N/A | Black |  White | No     |
 
 
 The bottom board is the electrical board containing all the components and signals, and is used for all iterations. The following two boards provide spacing and separation for the diffusion of the LEDs, as well as cut outs for the other components, and the final board provides diffusion and a solid panel for the front face. The layout of each layer is shown in the table below.
@@ -381,7 +381,7 @@ The bottom board is the electrical board containing all the components and signa
 PCB stack is best for quantities below 500 units.
 
 #### Die Cut
-The die cut panels replace the top three panels with 1/16" plastic that is die cut. This is faster to manufacture and less expensive, since we do not need the copper, silk, or mask layers. Also, uses a through-opaque material instead of the FR4 providing better protection from light bleed.
+The die cut panels replace the top three panels with `1/16"` plastic that is die cut. This is faster to manufacture and less expensive, since we do not need the copper, silk, or mask layers. Also, uses a through-opaque material instead of the FR4 providing better protection from light bleed.
 
 |     L1    |     L2    |     L3    |
 |:---------:|:---------:|:---------:|
@@ -394,7 +394,7 @@ Injection moulded panel will replace the front three panels with a single inject
 
 ![imProto]
 
-A test model was made with 2.5 deg draft angles and 1.2mm wall thickness for ABS moulding. Approximate calculations show tooling costs of $7.5k for production steel tooling, and 15s cycle time.
+A test model was made with 2.5 deg draft angles and `1.2 mm` wall thickness for ABS moulding. Approximate calculations show tooling costs of $7.5k for production steel tooling, and 15s cycle time.
 
 Switch to IM at 20k-100k units.
 
@@ -422,7 +422,7 @@ The production programmer is a program and test jig. The boards are slipped unde
 The artwork on the back is a trademark and protected by copyright. This can not be duplicated on derivative works. It consists of the Kolibri bird, copyright and designer notices, certifications, a location for labeling, as well as the URL and QR code to documentation.
 
 ### Labels
-The back has a location for a 38 mm x 13 mm label from a Brother 38 mm continuous label. This label can have serial number, batch numbers, the model number, and any other device specific information.
+The back has a location for a `38 mm` x `13 mm` label from a Brother `38 mm` continuous label. This label can have serial number, batch numbers, the model number, and any other device specific information.
 
 ![config-label]
 
@@ -462,7 +462,7 @@ The edges are milled, but it is possible to have small pieces that could cause c
 
 The boards are assembled in a lead-free process and all components are RHOS certified.
 
-The low voltage 3-5.5V as well as the currents used pose very little risk to healthy humans.
+The low voltage `3.0`-`5.5V` as well as the currents used pose very little risk to healthy humans.
 
 ## Certifications
 Certifications take time and effort but will make a better product by guaranteeing its safety to users and let them use it in other projects. The table below shows the order we will be trying to obtain certifications.
@@ -554,7 +554,7 @@ As with everything, this too is built on the gracious support of previous projec
 [SEG-16-RED-MDNT]:        ./docs/product/SEG-16-RED-MDNT.jpg                                     "Top view of a MDNT"
 [SEG-16-RED-BASE]:        ./docs/product/SEG-16-RED-BASE.jpg                                     "Top view of a BASE"
 [angledShow]:             ./docs/product/angledShow.jpg                                          "Angled shot of two panels"
-[cycleGif]:               ./docs/char/char8M.gif                                              "Animated gif of full ASCII cycle"
+[cycleGif]:               ./docs/char/char8M.gif                                                 "Animated gif of full ASCII cycle"
 [schematic]:              ./docs/assembly/schematic.png                                          "Full schematic of design"
 
 <!-- Config -->
@@ -599,8 +599,8 @@ As with everything, this too is built on the gracious support of previous projec
 [imProto]:                ./docs/assembly/imProto.png                                            "Prototype injection moulding model render"
 
 <!-- Programmer -->
-[minimalProgrammer]:       ./docs/programmer/minimalProgrammer.jpg                                  "Minimal programmer picture"
-[productionProgrammer]:    ./docs/programmer/productionProgrammer.png                               "Production programmer render"
+[minimalProgrammer]:       ./docs/programmer/minimalProgrammer.jpg                               "Minimal programmer picture"
+[productionProgrammer]:    ./docs/programmer/productionProgrammer.png                            "Production programmer render"
 
 <!-- Components -->
 [IMG-KT-0603R]:           ./pcb/SEG-16-XXX-XXXX-L0/components/KT-0603R/KT-0603R.jpg              "Led componet image"
