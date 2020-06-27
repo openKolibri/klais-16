@@ -180,6 +180,11 @@ void main() {
   // Clock Prescaler 1, 16MHz
   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
 
+  GPIO_DeInit(GPIOA);
+  GPIO_DeInit(GPIOB);
+  GPIO_DeInit(GPIOC);
+  GPIO_DeInit(GPIOD);
+
   // Setup config pins, Input, WeakPullup
   GPIO_Init(GPIOC, GPIO_PIN_3, GPIO_MODE_IN_PU_NO_IT);
   GPIO_Init(GPIOC, GPIO_PIN_4, GPIO_MODE_IN_PU_NO_IT);
@@ -190,14 +195,18 @@ void main() {
   GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_IN_PU_NO_IT);
 
   // Read configuration
-  config |= GPIO_ReadInputPin(GPIOC, GPIO_PIN_3) << 0;
-  config |= GPIO_ReadInputPin(GPIOC, GPIO_PIN_4) << 1;
-  config |= GPIO_ReadInputPin(GPIOC, GPIO_PIN_5) << 2;
-  config |= GPIO_ReadInputPin(GPIOC, GPIO_PIN_6) << 3;
-  config |= GPIO_ReadInputPin(GPIOC, GPIO_PIN_7) << 4;
-  config |= GPIO_ReadInputPin(GPIOD, GPIO_PIN_2) << 5;
-  config |= GPIO_ReadInputPin(GPIOD, GPIO_PIN_3) << 6;
+  config |= !GPIO_ReadInputPin(GPIOC, GPIO_PIN_3) << 0;
+  config |= !GPIO_ReadInputPin(GPIOC, GPIO_PIN_4) << 1;
+  config |= !GPIO_ReadInputPin(GPIOC, GPIO_PIN_5) << 2;
+  config |= !GPIO_ReadInputPin(GPIOC, GPIO_PIN_6) << 3;
+  config |= !GPIO_ReadInputPin(GPIOC, GPIO_PIN_7) << 4;
+  config |= !GPIO_ReadInputPin(GPIOD, GPIO_PIN_2) << 5;
+  config |= !GPIO_ReadInputPin(GPIOD, GPIO_PIN_3) << 6;
 
+  // Set baud rate based on config
+  uint32_t bauds[] = {115200, 110, 300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 128000, 230400, 256000, 460800, 1000000};
+  uint32_t baud = bauds[(config & 0X1E) >> 1];
+ 
   // Starting buffer marker location
   buffer.marker = 16;
   buffer.txMode = ASCII;
@@ -207,13 +216,13 @@ void main() {
 
   UART1_DeInit();
   // UART1 configured as follow:
-  //       - BaudRate = 115200 baud
+  //       - BaudRate = baud
   //       - Word Length = 8 Bits
   //       - One Stop Bit
   //       - No parity
   //       - Receive and transmit enabled
   //       - UART1 Clock disabled
-  UART1_Init((uint32_t)115200, UART1_WORDLENGTH_8D, UART1_STOPBITS_1,
+  UART1_Init(baud, UART1_WORDLENGTH_8D, UART1_STOPBITS_1,
              UART1_PARITY_NO, UART1_SYNCMODE_CLOCK_DISABLE,
              UART1_MODE_TXRX_ENABLE);
   UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
@@ -238,7 +247,7 @@ void main() {
   tm1640Init(GPIOB, GPIO_PIN_5, GPIOB, GPIO_PIN_4);
   setBrightness(BRIGHTNESS_14);
   printLetter(buffer.data[buffer.marker]);
-  
+
   uint8_t ledBuffer[17];
 
   while (1) {

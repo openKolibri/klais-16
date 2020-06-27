@@ -1,7 +1,7 @@
 # Sixteen Segment Display User Guide
 This User guide goes over basic usage instructions. With examples for control with a few systems and languages.
 
-
+Remmber the transmit of one module or the coroller always goes to the recieve of the next. Its natural to think that the pins should be lined up same to same, but since serial data is unidrectional one device talks (`TX`) and the next one listens (`RX`). Could not count the number of times I've messed this up, you wont break anything, but things just wont work.
 
 All components a RHOS certified and assembly is done in a leadfree process.
 
@@ -16,7 +16,7 @@ You will need to some really minimal soldering that is very forgiving. I am curr
 ### Mounting Method
 If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use 2.5mm Boondus balldriver for M3 socket cap screws). Alternetively if mounting to wood with #4 screws you will need a drill/driver and as well as possibly a spade bit to make clearence for the joints. 
 
-[toolsAndParts]
+![toolsAndParts]
 
 ## Assemlbing a Array
 

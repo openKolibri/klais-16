@@ -291,20 +291,59 @@ Besides direct control over the LEDs, there are also helper functions such as se
 ![segmentMap]
 
 #### Configuration
-On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then be used to set the configuration.
+On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then thier inverted state can be used to set the configuration.
 
 ```c
   uint8_t config = 0x00;
-  config |= Read(PIN_0) << 0;
-  config |= Read(PIN_1) << 1;
-  config |= Read(PIN_2) << 2;
-  config |= Read(PIN_3) << 3;
-  config |= Read(PIN_4) << 4;
-  config |= Read(PIN_5) << 5;
-  config |= Read(PIN_6) << 6;
+  config |= !read(PIN_0) << 0;
+  config |= !read(PIN_1) << 1;
+  config |= !read(PIN_2) << 2;
+  config |= !read(PIN_3) << 3;
+  config |= !read(PIN_4) << 4;
+  config |= !read(PIN_5) << 5;
+  config |= !read(PIN_6) << 6;
 ```
 
-Currently the firmware uses no configuration options.
+The pads have functions attached to them, some are just switches, while others join together in a binary segment to allow multiple selections.
+
+| Pad | Function         | Status               |
+| ---:| ---------------- | -------------------- |
+|   0 | Inverted Display | Not implemented      |
+|   1 | Baud (Bit 3)     | Implemented in 0.6   |
+|   2 | Baud (Bit 2)     | Implemented in 0.6   |
+|   3 | Baud (Bit 1)     | Implemented in 0.6   |
+|   4 | Baud (Bit 0)     | Open for Development |
+|   5 | Pending          | Open for Development |
+|   6 | Pending          | Open for Development |
+
+
+##### Baud Selection
+Pads `[4:1]` allow baud selection, the default is `115200` as it is a common bitrate that is avalible on most computer and microcontrollers and is reasonably fast for most applications.
+
+| Pad 4 | Pad 3 | Pad 2 | Pad 1 | Selected Baud |
+| -----:| -----:| -----:| -----:| -------------:|
+|     0 |     0 |     0 |     0 |        115200 |
+|     0 |     0 |     0 |     1 |           110 |
+|     0 |     0 |     1 |     0 |           300 |
+|     0 |     0 |     1 |     1 |           600 |
+|     0 |     1 |     0 |     0 |          1200 |
+|     0 |     1 |     0 |     1 |          2400 |
+|     0 |     1 |     1 |     0 |          4800 |
+|     0 |     1 |     1 |     1 |          9600 |
+|     1 |     0 |     0 |     0 |         19200 |
+|     1 |     0 |     0 |     1 |         38400 |
+|     1 |     0 |     1 |     0 |         57600 |
+|     1 |     0 |     1 |     1 |        128000 |
+|     1 |     1 |     0 |     0 |        230400 |
+|     1 |     1 |     0 |     1 |        256000 |
+|     1 |     1 |     1 |     0 |        460800 |
+|     1 |     1 |     1 |     1 |       1000000 |
+
+It is tested with a 4 bit mask and right shifted to get numbers 0-15 from the config byte.
+```c
+uint32_t bauds[16] = {115200, 110, /*...*/, 460800, 1000000};
+uint32_t baud = bauds[(config & 0X1E) >> 1];
+```
 
 #### Compiling
 It is setup to be compiled through [PlatformIO]. More information can be found through its [documentation][platformIODocs]. Changes may be made to the settings in the `ini` file.
@@ -580,10 +619,10 @@ As with everything, this too is built on the gracious support of previous projec
 [2020Installed]:          ./docs/mounting/2020Installed.jpg                                      "Example of display mounted in 2020 extrusion"
 [M3x8]:                   ./docs/mounting/M3x8.jpg                                               "M3x8 screw and nut"
 [M3x8Installed]:          ./docs/mounting/M3x8Installed.jpg                                      "Module assembled with screw and nut"
-[makerbeamParts]:         ./docs/mounting/makerbeamParts.jpg                                     "Parts for mounting on makerbeam"
-[makerbeamInstalled]:     ./docs/mounting/makerbeamInstalled.jpg                                 "Example installation om makerbeam"
-[openbeamParts]:          ./docs/mounting/openbeamParts.jpg                                      "Parts for mounting on openBeam"
-[openbeamInstalled]:      ./docs/mounting/openbeamInstalled.jpg                                  "Example installtion on openBeam"
+[makerbeamParts]:         ./docs/mounting/makerbeamParts.jpg                                     "Parts for mounting on MakerBeam"
+[makerbeamInstalled]:     ./docs/mounting/makerbeamInstalled.jpg                                 "Example installation on makerbeam"
+[openbeamParts]:          ./docs/mounting/openbeamParts.jpg                                      "Parts for mounting on OpenBeam"
+[openbeamInstalled]:      ./docs/mounting/openbeamInstalled.jpg                                  "Example installtion on OpenBeam"
 [springPin]:              ./docs/mounting/springPin.jpg                                          "Spring pins with ruler"
 [springPinInstalled]:     ./docs/mounting/springPinInstalled.jpg                                 "Example of spring pin installation"
 
