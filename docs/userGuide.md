@@ -1,40 +1,58 @@
 # Sixteen Segment Display User Guide
-This User guide goes over basic usage instructions. With examples for control with a few systems and languages.
+This guide goes over basic usage instructions on how to implement the dispay into what you are making, a far more detialed [technical manual][readme] is also avilible. With examples for control with a few systems and languages.
 
-Remmber the transmit of one module or the coroller always goes to the recieve of the next. Its natural to think that the pins should be lined up same to same, but since serial data is unidrectional one device talks (`TX`) and the next one listens (`RX`). Could not count the number of times I've messed this up, you wont break anything, but things just wont work.
-
-All components a RHOS certified and assembly is done in a leadfree process.
+Make sure you discharge any static electricity on a ground point before wokring on assembling any displays.
 
 ## Contents
-In the package you will recieve a labelled, programed, and tested display module in its default conifguration. Assembled with 3 mm x 7.5 mm plastic push rivets. 
+In the package you will recieve a labelled, programed, and tested display module in its default conifguration. Assembled with `3 mm` x `7.5 mm` plastic push rivets. 
 
 ## Required Tools
 
 ### Soldering Iron
-You will need to some really minimal soldering that is very forgiving. I am currenty using my portable TS100 soldering iron set at 350C. Along with the soldering iron you will need solder, I prefer rosin core leaded solder (Kester 60/40) which is easier to work with, but lead free should be completely serviceable (you might need to bump up the temperature to 400C for lead free).
+You will need to some really minimal soldering that is very forgiving. I am currenty using my portable TS100 soldering iron set at 350C. 
 
-### Mounting Method
-If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use 2.5mm Boondus balldriver for M3 socket cap screws). Alternetively if mounting to wood with #4 screws you will need a drill/driver and as well as possibly a spade bit to make clearence for the joints. 
+Along with the soldering iron you will need solder, I prefer rosin core leaded solder (Kester 60/40) which is easier to work with, but lead free should be completely serviceable (you might need to bump up the temperature to 400C for lead free). Seperate flux is also helpful to have, but probably not needed.
+
+All components and the assembly are RHOS certified and a full leadfree proces is used. If you are using leaded solder, you might need to dilute the lead free solder with leaded for better wetting when solderling.
+
 
 ![toolsAndParts]
 
-## Assemlbing a Array
+## Mounting Method
+There are quite a few mounting methods but I will go over a few of my favorites depending on the look you want.
+
+If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use 2.5mm Boondus balldriver for M3 socket cap screws). Alternetively if mounting to wood with #4 screws you will need a drill/driver and as well as possibly a spade bit to make clearence for the joints. 
+
+### Canvas frame
+Using canvas strechers to make a square frame, or even just wooden 1x2 that have been planed with #4 or 3 mm pan head wood screws is a quick assembly process. Drill pilot holes for mounting before driving in the screws, as the chance of splitting is high with thin pieces. If you use a whole backing board, you will need to drill creaence holes for the connections in the back.
+
+### 15 mm Aluminum Extrusion
+Aluminum extrusion like Misumi 1515 or OpenBeam is easy to cut to length with a hacksaw, and can mount with M3 screws. No holes need to be drilled and at least two screws per module enusres everything is kept in square.
 
 [screwing togeether gif]
 
-After mounting the segments, the contacts are bridged for the data flow.
-Soldering iron at 350 C (675 F) and heat up both pads and flow solder until a bridge is formed. 
+### 20 mm Aluminum Extrusion
+The panels if joined together with pins for lignment, can be slid into the slots in Misumi 2020 or 80/20 metric extrusion. They can be securedin place with slot covers or T-nuts with grub screws.
+
+[Sliding into extrusion gif]
+
+## Assemlbing a Array
+After mounting the segments, the contacts are bridged for the data flow. Just add solder until it builds up to the point that it bridges over. You can also use a small piece of wire in place to make the solder bridge easier. The contacts are placed 0.1 in apart so header pins could also be used if bent into place.
 
 [soldering gif]
 
+Then on the first panel connect in the data from the controllor or computer as well as `+5V` and `GND` pins. Be wary of current requrements, exact numbers for each charachert and brightness vaules are availbie in a [table], but each module can draw a max current of about 320 mA so make sure your power supply is sufficently rated.
+
+[connecting to first panel]
+
+Remmber the transmit of one module or the controller always goes to the recieve of the next. Its natural to think that the pins should be lined up same to same, but since serial data is unidrectional one device talks (`TX`) and the next one listens (`RX`). Could not count the number of times I've messed this up, you won't break anything, but things just wont work if you install a panel upside down.
+
+If you want ot use a baud rate other than 115200 bits per second, you can bridge the config pads to select one of the 15 alternetive bitrates from the [configuration table].
+
 ## Disassembly
-Reheat the solder joint with a clean tip to pick up some solder and unridge the connection. If needed the pads can then be cleaned with an iron at 400 C (750 F) and solder wick.
+Reheat the solder joints with a clean tip to pick up some solder and unridge the connection. If needed the pads can then be cleaned with an iron at 400 C (750 F) and solder wick. 
 
 [desolder gif]
-
-Then unmount the modules.
-
-[Disassebmly gif]
 
 ## Surface Repair
 The surface coating of soldermask is fairly robust (TAIYO INK PSR-2000) but if scratches appear, black matte nail polish can be used to apply another coat as a close match.
@@ -126,7 +144,9 @@ print("Hello"[::-1])
 
 ```
 
+<!-- Internal Links -->
+[readme]:                    ../readme.md
 
 
 <!-- Images -->
-[toolsAndParts]:             ./docs/userGuide/toolsAndParts.jpg
+[toolsAndParts]:             ./userGuide/toolsAndParts.jpg
