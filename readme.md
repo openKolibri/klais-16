@@ -111,16 +111,16 @@ STMicroelectronics's [STM8S003] is a very low-cost microcontroller for cost sens
 #### Power supply
 The input power is rated at `5V`, and the current drawn is dependent on the number of lit LEDs and the color of the display. Each segment has `100 uF` + `10 uF` of bulk capacitance, as well as decoupling on all the chips so it should be robust against a unstable power supply. There is no reverse polarity or overvoltage protection as that is the responsibility of the integrator. The table below shows some current draws, with the full table of all the models and characters [available][asciiCurrent] along with measurement methodology.
 
-Maximum power draw is 1.6W at max brightness and all segments lit. Temperature rise above ambient after two hours is 15.9°C (61°F).
-
 | Display  | `RED` Full Brightness (mA) | `RED` Min Brightness (mA) |
 | -------- | --------------------------:| -------------------------:|
 | Off      |                        5.2 |                       5.2 |
 | All      |                      319.0 |                      28.6 |
-| `@`      |                      197.0 |                           |
-| `.`      |                       17.1 |                           |
-| `K`      |                      125.7 |                           |
-| `[`      |                      106.0 |                           |
+| `@`      |                      197.0 |                      19.1 |
+| `.`      |                       17.1 |                       6.0 |
+| `K`      |                      125.7 |                      13.8 |
+| `[`      |                      106.0 |                      12.4 |
+
+Maximum power draw is `1.6 W` at max brightness and all segments lit. Temperature rise above ambient after two hours is `15.9°C` (`61°F`).
 
 #### Connections
 The back of the module contains pads that are used for communication and configuration, providing many options to the end-user.
