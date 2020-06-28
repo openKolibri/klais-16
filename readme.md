@@ -291,7 +291,7 @@ Besides direct control over the LEDs, there are also helper functions such as se
 ![segmentMap]
 
 #### Configuration
-On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled, any that have been bridged to ground will read as low and can then thier inverted state can be used to set the configuration.
+On boot, the seven GPIO for the configuration pads have their internal pullups enabled and are then set as inputs. They are all sampled. Any that have been bridged to ground will read as low and their inverted state can be used to set the configuration.
 
 ```c
   uint8_t config = 0x00;
