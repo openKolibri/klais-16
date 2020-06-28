@@ -1,68 +1,70 @@
 # Sixteen Segment Display User Guide
 This guide goes over basic usage instructions on how to implement the display into what you are making, a far more detailed [technical manual][readme] is also available. With examples for control with a few systems and languages.
 
-Make sure you discharge any static electricity on a ground point before working on assembling any displays.
+Make sure you discharge any static electricity on a ground point before working on or assembling any displays.
 
 ## Contents
-In the package you will recieve a labelled, programed, and tested display module in its default conifguration. Assembled with `3 mm` x `7.5 mm` plastic push rivets. 
+In the package you will recieve a labelled, programed, and tested display module in its default conifguration. Assembled with `3 mm` x `7.5 mm` plastic push rivets. All the components that make a module is pictured.
+
+![contents]
 
 ## Required Tools
+Only a few tools are required just some soldering and a way to mount your panels, get creative.
 
 ### Soldering Iron
-You will need to do some really minimal soldering that is very forgiving. I am currenty using my portable TS100 soldering iron set at 350C. 
+You will need to do some really minimal soldering that is very forgiving. I am currenty using my portable TS100 soldering iron set at `350°C` (`650°F`). 
 
-Along with the soldering iron you will need solder, I prefer rosin core leaded solder (Kester 60/40) which is easier to work with, but lead-free should be completely serviceable (you might need to bump up the temperature to 400C for lead-free). Separate flux is also helpful to have, but probably not needed.
+Along with the soldering iron you will need solder, I prefer rosin core leaded solder (Kester 60/40) which is easier to work with, but lead-free should be completely serviceable (you might need to bump up the temperature to `400°C`, `750°F`, for lead-free). Separate flux is also helpful to have, but probably not needed.
 
 All components and the assembly are RHOS certified and a full lead-free process is used. If you are using leaded solder, you might need to dilute the lead-free solder with leaded for better wetting when soldering.
-
 
 ![toolsAndParts]
 
 ## Mounting Method
 There are quite a few mounting methods but I will go over a few of my favorites, depending on the look you want.
 
-If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use 2.5 mm Boondus balldriver for M3 socket cap screws). Alternatively if mounting to wood with #4 screws you will need a drill/driver and possibly a spade bit to make clearence for the joints. 
+If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use `2.5 mm` Boondus balldriver for M3 socket cap screws). Alternatively if mounting to wood with `#4` screws you will need a drill/driver and possibly a spade bit to make clearence for the joints. 
 
 ### Canvas frame
-Using canvas strechers to make a square frame, or even just wooden 1x2 that have been planed with #4 or 3 mm pan head wood screws is a quick assembly process. Drill pilot holes for mounting before driving in the screws, as the chance of splitting is high with thin pieces. If you use a whole backing board, you will need to drill clearance holes for the connections in the back.
+Using canvas strechers to make a square frame, or even just wooden 1x2 that have been planed with `#4` or `3 mm` pan head wood screws is a quick assembly process. Drill pilot holes for mounting before driving in the screws, as the chance of splitting is high with thin pieces. If you use a whole backing board, you will need to drill clearance holes for the connections in the back.
 
 ### 15 mm Aluminum Extrusion
 Aluminum extrusion like Misumi 1515 or OpenBeam is easy to cut to length with a hacksaw, and can mount with M3 screws. No holes need to be drilled and at least two screws per module ensures everything is kept in square.
 
-[screwing togeether gif]
+<img src="./userGuide/1515mounting.gif" width="100%">
 
 ### 20 mm Aluminum Extrusion
-The panels, if joined together with pins for lignment, can be slid into the slots in Misumi 2020 or 80/20 metric extrusion. They can be secured in place with slot covers or T-nuts with grub screws.
+The panels, if joined together with pins for alignment, can be slid into the slots in Misumi 2020 or 80/20 metric extrusion. They can be secured in place with slot covers or T-nuts with grub screws.
 
-[Sliding into extrusion gif]
+<img src="./userGuide/2020mounting.gif" width="100%">
 
 ## Assemlbing a Array
 After mounting the segments, the contacts are bridged for the data flow. Just add solder until it builds up to the point that it bridges over. You can also use a small piece of wire in place to make the solder bridge easier. The contacts are placed 0.1 in apart so header pins could also be used if bent into place.
 
-[soldering gif]
+<img src="./userGuide/soldering.gif" width="100%">
 
-Then on the first panel connect in the data from the controller or computer as well as `+5V` and `GND` pins. Be wary of current requrements, exact numbers for each character and brightness vaules are available in a [table], but each module can draw a max current of about 320 mA so make sure your power supply is sufficently rated.
+Then on the first panel connect in the data from the controller or computer as well as `+5V` and `GND` pins. Be wary of current requrements, exact numbers for each character and brightness vaules are available in a [table][currentTable], but each module can draw a max current of about `320 mA` so make sure your power supply is sufficently rated.
 
-[connecting to first panel]
+<img src="./userGuide/connectFirstPanel.gif" width="100%">
 
 Remember the transmit of one module or the controller always goes to the recieve of the next. Its natural to think that the pins should be lined up same to same, but since serial data is unidrectional one device talks (`TX`) and the next one listens (`RX`). I can not count the number of times I've messed this up. You won't break anything, but things just won't work if you install a panel upside down.
 
 If you want to use a baud rate other than 115200 bits per second, you can bridge the config pads to select one of the 15 alternative bitrates from the [configuration table].
 
 ## Disassembly
-Reheat the solder joints with a clean tip to pick up some solder and unbridge the connection. If needed the pads can then be cleaned with an iron at 400 C (750 F) and solder wick. 
+Reheat the solder joints with a clean tip to pick up some solder and unbridge the connection. If needed the pads can then be cleaned with an iron at `400°C` (`750°F`) and solder wick. 
 
-[desolder gif]
+<img src="./userGuide/desolder.gif" width="100%">
 
 ## Surface Repair
 The surface coating of soldermask is fairly robust (TAIYO INK PSR-2000) but if scratches appear, black matte nail polish can be used to apply another coat as a close match.
 
-[blackPolishGif]
+<img src="./userGuide/repair.gif" width="100%">
 
 ## Writing
 The data in the segments is shifted across when a new character is sent. In order to show characters in a left to right format, they will need to be sent in reverse. 
 
-This can be done with built in tools like `rev` in linux manually, by encoding the string backwards, or through looping the string in reverse and sending one character at a time. 
+This can be done with built in tools like `rev` in linux, manually, by encoding the string backwards, or through looping the string in reverse and sending one character at a time. 
 
 No custom libraries are needed for most platforms, as basic UART functionality already exits in hardware. This allows communication from a variety of machines from early home computers, microcontrollers, and laptops.
 
@@ -146,7 +148,9 @@ print("Hello"[::-1])
 
 <!-- Internal Links -->
 [readme]:                    ../readme.md
-
+[configuration table]:       ../readme.md#configuration
+[currentTable]:              ./asciiCurrent.md
 
 <!-- Images -->
 [toolsAndParts]:             ./userGuide/toolsAndParts.jpg
+[contents]:                  ./userGuide/contents.jpg

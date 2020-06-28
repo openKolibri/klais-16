@@ -38,6 +38,7 @@ What follows below is highly detailed technical documentation. The [user guide][
         * [LED Number](#led-number)
         * [Segment Order](#segment-order)
       * [Configuration](#configuration)
+        * [Baud Selection](#baud-selection)
       * [Compiling](#compiling)
       * [Flashing](#flashing)
   * [Absolute Maximum Ratings](#absolute-maximum-ratings)
