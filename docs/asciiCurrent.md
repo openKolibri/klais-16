@@ -109,7 +109,7 @@ Tested at various brightnesses, no complete coverage just yet. Colums are notate
 
 
 <!-- Test Stand -->
-
+[currTest]: ./firmware/currentTestStand.jpg
 
 
 <!-- Charachters -->
