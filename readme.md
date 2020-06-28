@@ -598,12 +598,12 @@ As with everything, this too is built on the gracious support of previous projec
 [schematic]:              ./docs/assembly/schematic.png                                          "Full schematic of design"
 
 <!-- Config -->
-[config-back]:            ./docs/config/backPanel.png                                            "View of entire back panel"
-[config-pgrm]:            ./docs/config/pgrm.png                                                 "Detail of the program pads"
-[config-dataflow]:        ./docs/config/dataflow.png                                             "Detail of the data flow connector and jumpers"
+[config-back]:            ./docs/config/backPanel.jpg                                            "View of entire back panel"
+[config-pgrm]:            ./docs/config/pgrm.jpg                                                 "Detail of the program pads"
+[config-dataflow]:        ./docs/config/dataflow.jpg                                             "Detail of the data flow connector and jumpers"
 [config-dataflowInv]:     ./docs/config/dataflowInv.png                                          "Soldering instructions on traces to cut and bridge"
-[config-config]:          ./docs/config/config.png                                               "Detail of configuration pads"
-[config-keyed]:           ./docs/config/keyed.png                                                "Detail of keyed spring connector"
+[config-config]:          ./docs/config/config.jpg                                               "Detail of configuration pads"
+[config-keyed]:           ./docs/config/keyed.jpg                                                "Detail of keyed spring connector"
 [config-label]:           ./docs/config/label.png                                                "Example of label"
 
 <!-- Firmware -->
