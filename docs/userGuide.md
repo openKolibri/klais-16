@@ -20,10 +20,10 @@ All components and the assembly are RHOS certified and a full lead-free process 
 
 ![toolsAndParts]
 
-## Mounting Method
-There are quite a few mounting methods but I will go over a few of my favorites, depending on the look you want.
+If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use `2.5 mm` Boondus balldriver for M3 socket cap screws). Alternatively if mounting to wood with `#4` screws you will need a drill/driver, a pilot hole drill bit, and possibly a spade bit to make clearence for the joints.
 
-If you are mounting on aluminum extrusion, you will need allen keys or screwdrivers for the screws you are using (I use `2.5 mm` Boondus balldriver for M3 socket cap screws). Alternatively if mounting to wood with `#4` screws you will need a drill/driver and possibly a spade bit to make clearence for the joints. 
+## Mounting Method
+There are quite a few mounting methods but I will go over a few of my favorites, depending on the look you want. 
 
 ### Canvas frame
 Using canvas strechers to make a square frame, or even just wooden 1x2 that have been planed with `#4` or `3 mm` pan head wood screws is a quick assembly process. Drill pilot holes for mounting before driving in the screws, as the chance of splitting is high with thin pieces. If you use a whole backing board, you will need to drill clearance holes for the connections in the back.
