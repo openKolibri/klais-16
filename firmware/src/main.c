@@ -248,8 +248,6 @@ void main() {
   setBrightness(BRIGHTNESS_14);
   printLetter(buffer.data[buffer.marker]);
 
-  uint8_t ledBuffer[17];
-
   while (1) {
   }
 }
