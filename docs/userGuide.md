@@ -71,8 +71,8 @@ No custom libraries are needed for most platforms, as basic UART functionality a
 ### Basic examples
 Basic examples are provided for a number of diffrent languages and microcontroller environments for outputing a string to the display.
 
-#### Windows Batch File
-Run the following commands (directly or in a `.bat` file) to set up COM** and output the string.
+#### ✓ Windows Batch File
+Run the following commands (directly in `cmd.exe` or in a `.bat` file) to set up COM** and output the string.
 ```cmd
 mode COM** BAUD=115200 PARITY=n DATA=8
 set /p x="olleh" <nul >\\.\COM**
