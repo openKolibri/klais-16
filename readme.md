@@ -319,7 +319,7 @@ The pads have functions attached to them, some are just switches, while others j
 
 
 ##### Baud Selection
-Pads `[4:1]` allow baud selection, the default is `115200` as it is a common bitrate that is avalible on most computer and microcontrollers and is reasonably fast for most applications.
+Pads `[4:1]` allow baud selection, the default is `115200` as it is a common bitrate that is available on most computer and microcontrollers and is reasonably fast for most applications.
 
 | Pad 4 | Pad 3 | Pad 2 | Pad 1 | Selected Baud |
 | -----:| -----:| -----:| -----:| -------------:|
@@ -340,7 +340,7 @@ Pads `[4:1]` allow baud selection, the default is `115200` as it is a common bit
 |     1 |     1 |     1 |     0 |        460800 |
 |     1 |     1 |     1 |     1 |       1000000 |
 
-It is tested with a 4 bit mask and right shifted to get numbers 0-15 from the config byte.
+It is tested with a 4 bit mask and right-shifted to get numbers 0-15 from the config byte.
 ```c
 uint32_t bauds[16] = {115200, 110, /*...*/, 460800, 1000000};
 uint32_t baud = bauds[(config & 0X1E) >> 1];
