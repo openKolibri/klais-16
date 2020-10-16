@@ -650,7 +650,7 @@ As with everything, this too is built on the gracious support of previous projec
 [IMG-TAJB107K006RNJ]:     ./pcb/SEG-16-XXX-XXXX-L0/components/TAJB107K006RNJ/TAJB107K006RNJ.jpg  "Bulk capacitor image"
 
 <!-- Certifications -->
-[DE000087]:               https://certification.oshwa.org/DE000087.html
+[DE000087]:               https://certification.oshwa.org/de000087.html
 
 <!-- Licence -->
 [CERN-OHL-S]:             ./pcb/LICENSE

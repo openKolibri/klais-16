@@ -40,7 +40,6 @@ DataBuffer buffer;
 // Stores the config read from pads
 uint8_t config = 0x00;
 
-
 // Character Operating Modes
 typedef enum Modes {
   ASCII              = 0x00,   // No Control Code
@@ -185,6 +184,14 @@ void main() {
   GPIO_DeInit(GPIOC);
   GPIO_DeInit(GPIOD);
 
+  // Internal Watchdog
+  IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);    // Enable write access to IWDG registers.
+  IWDG_SetPrescaler(IWDG_Prescaler_4);             // IWDG timer clock will be (LSI / 4).
+  IWDG_SetReload(0xFF);
+  IWDG_ReloadCounter();                            // Reload the IWDG counter.
+  IWDG_WriteAccessCmd(IWDG_WriteAccess_Disable);   // Disable write
+  IWDG_Enable();                                   // Enable IWDG (LSI will be enabled by hardware).
+
   // Setup config pins, Input, WeakPullup
   GPIO_Init(GPIOC, GPIO_PIN_3, GPIO_MODE_IN_PU_NO_IT);
   GPIO_Init(GPIOC, GPIO_PIN_4, GPIO_MODE_IN_PU_NO_IT);
@@ -249,5 +256,9 @@ void main() {
   printLetter(buffer.data[buffer.marker]);
 
   while (1) {
+    // Reload the watchdog timer while wating
+    IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);
+    IWDG_ReloadCounter();
+    IWDG_WriteAccessCmd(IWDG_WriteAccess_Disable);
   }
 }
