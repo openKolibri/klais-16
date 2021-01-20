@@ -313,7 +313,7 @@ The pads have functions attached to them, some are just switches, while others j
 |   1 | Baud (Bit 3)     | Implemented in 0.6   |
 |   2 | Baud (Bit 2)     | Implemented in 0.6   |
 |   3 | Baud (Bit 1)     | Implemented in 0.6   |
-|   4 | Baud (Bit 0)     | Open for Development |
+|   4 | Baud (Bit 0)     | Implemented in 0.6   |
 |   5 | Pending          | Open for Development |
 |   6 | Pending          | Open for Development |
 
