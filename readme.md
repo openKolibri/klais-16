@@ -383,7 +383,7 @@ The BOM was selected with parts that are common to the Chinese high-volume manuf
 | C2        |   1 | AVX                        | TAJA106K016RNJ   | CAP: Tantalum 10uF 16V CASE-A_3216          |
 | C3 C6     |   3 | Samsung Electro-Mechanics  | CL05A105KA5NQNC  | CAP: MLCC 1uF 25V 0402                      |
 | C4 C5 C7  |   2 | Samsung Electro-Mechanics  | CL05B104KO5NNNC  | CAP: MLCC 100nF 16V 0402                    |
-| D1-D128   | 128 | Hubei KENTO Elec           | KT-0603R         | LED: RED 520-625nM 90-100mcd@20mA 0603      |
+| D1-D128   | 128 | Hubei KENTO Elec           | KT-0603R         | LED: RED 520-625nm 90-100mcd@20mA 0603      |
 | R1 R2     |   2 | Uniroyal Elec              | 0402WGF1002TCE   | RES: 10K 1% 1/16W 0402                      |
 | U1        |   1 | STMicroelectronics         | STM8S003F3P6TR   | MCU: 8b 16Mhz 8k Flash 128B EEPROM TSSOP-20 |
 | U2        |   1 | Shenzhen Titan Micro Elec  | TM1640           | DRV: 16x8 LED Driver SOP-28                 |
