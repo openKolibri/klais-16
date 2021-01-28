@@ -11,4 +11,5 @@
   (lib (name passives)(type Legacy)(uri ${KIPRJMOD}/components/passives/passives.lib)(options "")(descr ""))
   (lib (name config)(type Legacy)(uri ${KIPRJMOD}/components/config/config.lib)(options "")(descr ""))
   (lib (name dataFlowConnector)(type Legacy)(uri ${KIPRJMOD}/components/dataFlowConnector/dataFlowConnector.lib)(options "")(descr ""))
+  (lib (name SEG-16-XXX-XXXX-L0-rescue)(type Legacy)(uri ${KIPRJMOD}/SEG-16-XXX-XXXX-L0-rescue.lib)(options "")(descr ""))
 )

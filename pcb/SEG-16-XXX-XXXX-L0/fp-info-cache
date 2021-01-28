@@ -1,4 +1,4 @@
-49327577136706
+50959805537897
 0472861001
 0472861001
 
@@ -8,7 +8,7 @@
 4
 KT-0603R
 KT-0603R
-LED{space}RED{space}520~625NM{space}90~100MCD@20MA{space}0603{space}ROHS
+LED RED 520~625NM 90~100MCD@20MA 0603 ROHS
 
 0
 2
@@ -50,22 +50,22 @@ SOP28-17.7x7.65
 28
 config
 SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm
-SMD{space}Solder{space}Jumper,{space}1x1.5mm,{space}rounded{space}Pads,{space}0.3mm{space}gap,{space}bridged{space}with{space}1{space}copper{space}strip
-solder{space}jumper{space}open
+SMD Solder Jumper, 1x1.5mm, rounded Pads, 0.3mm gap, bridged with 1 copper strip
+solder jumper open
 0
 2
 2
 config
 SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm
-SMD{space}Solder{space}Jumper,{space}1x1.5mm,{space}rounded{space}Pads,{space}0.3mm{space}gap,{space}open
-solder{space}jumper{space}open
+SMD Solder Jumper, 1x1.5mm, rounded Pads, 0.3mm gap, open
+solder jumper open
 0
 2
 2
 config
 SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm
-SMD{space}Solder{space}Jumper,{space}1x1.5mm{space}Triangular{space}Pads,{space}0.3mm{space}gap,{space}open
-solder{space}jumper{space}open
+SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open
+solder jumper open
 0
 2
 2
@@ -174,45 +174,52 @@ legend
 0
 0
 0
+markings
+rest
+
+
+0
+0
+0
 passives
 C_0402
-Capacitor{space}SMD{space}0402{space}(1005{space}Metric),{space}square{space}(rectangular){space}end{space}terminal,{space}IPC_7351{space}nominal,{space}(Body{space}size{space}source:{space}http://www.tortai-tech.com/upload/download/2011102023233369053.pdf),{space}generated{space}with{space}kicad-footprint-generator
+Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 capacitor
 0
 2
 2
 passives
 R_0402
-Resistor{space}SMD{space}0402{space}(1005{space}Metric),{space}square{space}(rectangular){space}end{space}terminal,{space}IPC_7351{space}nominal,{space}(Body{space}size{space}source:{space}http://www.tortai-tech.com/upload/download/2011102023233369053.pdf),{space}generated{space}with{space}kicad-footprint-generator
+Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 resistor
 0
 2
 2
 tooling
 1.152mm-ToolingHole
-1.152mm{space}with{space}{space}0.148mm{space}expansion.{space}JLC{space}Requirements
+1.152mm with  0.148mm expansion. JLC Requirements
 
 0
 1
 0
 tooling
 Fiducial_1.5mm_Mask3mm
-Circular{space}Fiducial,{space}1.5mm{space}bare{space}copper,{space}3mm{space}soldermask{space}opening
+Circular Fiducial, 1.5mm bare copper, 3mm soldermask opening
 fiducial
 0
 1
 0
 tooling
 TestPoint_Pad_D1.0mm
-SMD{space}pad{space}as{space}test{space}Point,{space}diameter{space}1.0mm
-test{space}point{space}SMD{space}pad
+SMD pad as test Point, diameter 1.0mm
+test point SMD pad
 0
 1
 1
 tooling
 TestPoint_Pad_D4.0mm
-SMD{space}pad{space}as{space}test{space}Point,{space}diameter{space}4.0mm
-test{space}point{space}SMD{space}pad
+SMD pad as test Point, diameter 4.0mm
+test point SMD pad
 0
 1
 1
