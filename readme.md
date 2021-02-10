@@ -186,7 +186,7 @@ By default the display boots in the `ASCII` character mode operating as a state-
 | Mode       | Control Byte | Bytes | Notes                       |
 | ---------- | ------------ | -----:| --------------------------- |
 | ASCII      | None         |     0 | Displays ASCII cahrachter   |
-| Segment    | 0x11 `DC1`   |     2 | Control individual segments |
+| Segment    | 0x11 `DC1`   |     3 | Control individual segments |
 | LED        | 0x12 `DC2`   |    16 | Control individual LEDs     |
 | Brightness | 0x13 `DC3`   |     1 | Set brightness              |
 
