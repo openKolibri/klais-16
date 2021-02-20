@@ -106,7 +106,7 @@ node ./main.js
 Minimal program for arduino.
 ```arduino
 void setup(){
-    Seiral.begin(115200);
+    Serial.begin(115200);
     Serial.print("olleH");
 }
 void loop(){
